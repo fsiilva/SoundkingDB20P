@@ -4,6 +4,7 @@ import { SEND_COMMANDS, SEND_PROTO_GUESS, RECEIVE_HANDLERS, ENM_COMMAND } from '
 import { eqCurve, simulatedSpectrum, suggestions } from './analyzer.js';
 
 const transport = new Transport();
+try { transport.simulateOffline(); } catch (e) { console.warn('Simulação offline inicial não carregada:', e.message); }
 
 const server = http.createServer(async (req, res) => {
   res.setHeader('Content-Type', 'application/json');
@@ -107,7 +108,7 @@ const server = http.createServer(async (req, res) => {
       let body = '';
       for await (const chunk of req) {
         body += chunk;
-        if (body.length > 4096) return reply(413, { error: 'Corpo muito grande.' });
+        if (body.length > 65536) return reply(413, { error: 'Corpo muito grande.' });
       }
       const parsed = body ? JSON.parse(body) : {};
 
@@ -123,6 +124,9 @@ const server = http.createServer(async (req, res) => {
       if (pathname === '/api/bus-send') return reply(200, await transport.applyBusSend(parsed));
       if (pathname === '/api/channel1-control') return reply(200, await transport.applyChannel1(parsed));
       if (pathname === '/api/channel1-fader') return reply(200, await transport.stepChannel1(parsed));
+      if (pathname === '/api/mute-group') return reply(200, await transport.applyMuteGroup(parsed));
+      if (pathname === '/api/apply-scene') return reply(200, await transport.applyScene(parsed));
+      if (pathname === '/api/simulate-snapshot') return reply(200, transport.simulateOffline());
       if (pathname === '/api/start-sync') return reply(200, transport.startAutoRead());
       if (pathname === '/api/read-snapshot') return reply(200, transport.requestSnapshot());
       if (pathname === '/api/disconnect') {

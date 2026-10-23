@@ -2,9 +2,12 @@ import LiveFader from './LiveFader';
 import { displayAppDb } from './faderScale';
 import Channel1Fader from './Channel1Fader';
 import React, { useState } from 'react';
-import { Radio, RefreshCw, ShieldCheck, Volume2, SlidersHorizontal, Activity, AudioLines, Zap, Check } from 'lucide-react';
+import { Radio, RefreshCw, ShieldCheck, Volume2, SlidersHorizontal, Activity, AudioLines, Zap, Check, AlertOctagon, Mic, Music2, VolumeX, Sparkles, Sliders } from 'lucide-react';
 import { useDesk } from './DeskContext';
 import { deskStatus } from './deskStatus';
+import RealFxPanel from './RealFxPanel';
+import RealGeqPanel from './RealGeqPanel';
+import SceneManager from './SceneManager';
 
 const number = v => typeof v === 'number' ? v.toLocaleString('pt-BR', { maximumFractionDigits: 3 }) : v === null || v === undefined ? '—' : String(v);
 
@@ -21,7 +24,7 @@ export function DeskConnectionBar() {
           <strong>{status.label}</strong>
           <small>
             {state?.snapshot
-              ? `Última leitura: ${new Date(state.snapshot.receivedAt).toLocaleTimeString('pt-BR')} · ${state.autoRead ? 'atualização a cada 6 s' : 'leitura automática pausada'}`
+              ? `Última leitura: ${new Date(state.snapshot.receivedAt).toLocaleTimeString('pt-BR')} · ${state.autoRead ? 'atualização a cada 6 s' : state.status === 'simulated' ? 'Modo simulação offline com captura real da DB20P' : 'leitura automática pausada'}`
               : 'Conecte para receber e controlar os canais da DB20P.'}
           </small>
         </div>
@@ -32,9 +35,19 @@ export function DeskConnectionBar() {
           <input aria-label="IP da mesa para conexão" value={host} onChange={e => setHost(e.target.value)} />
         </label>
         <button disabled={busy || state?.writeInProgress} onClick={() => action('connect', { protocol: 'tcp', host, port: 6400, autoRead: true })}>
-          {busy ? 'Aguarde…' : status.connected ? 'Reconectar' : 'Conectar à mesa'}
+          {busy ? 'Aguarde…' : status.connected && state?.status !== 'simulated' ? 'Reconectar' : 'Conectar à mesa'}
         </button>
-        {status.connected && (
+        {state?.status !== 'simulated' && (
+          <button
+            disabled={busy || state?.writeInProgress}
+            style={{ background: '#334155', color: '#e2e8f0' }}
+            onClick={() => action('simulate-snapshot')}
+            title="Carrega os dados reais capturados da mesa para testar 100% offline"
+          >
+            Modo Simulação (Offline)
+          </button>
+        )}
+        {status.connected && state?.status !== 'simulated' && (
           <>
             <button disabled={busy || state.readPending || state.autoRead} onClick={() => action('start-sync')}>
               <RefreshCw size={14} />
@@ -50,6 +63,134 @@ export function DeskConnectionBar() {
         <p className="connection-error" role="alert">{error || state.error || state.decodeError || state.snapshotError}</p>
       )}
     </section>
+  );
+}
+
+function MuteGroupsBar({ channels, masterOut, onToast }) {
+  const { action, busy, state } = useDesk();
+  const vocaisMuted = channels.filter((c, i) => {
+    const name = (c.name || '').toUpperCase();
+    return name.includes('VOZ') || name.includes('VOCAL') || name.includes('MIC') || i < 4;
+  }).length > 0 && channels.filter((c, i) => {
+    const name = (c.name || '').toUpperCase();
+    return name.includes('VOZ') || name.includes('VOCAL') || name.includes('MIC') || i < 4;
+  }).every(c => c.mute);
+
+  const bandaMuted = channels.filter((c, i) => {
+    const name = (c.name || '').toUpperCase();
+    const isVocal = name.includes('VOZ') || name.includes('VOCAL') || name.includes('MIC') || i < 4;
+    return !isVocal;
+  }).length > 0 && channels.filter((c, i) => {
+    const name = (c.name || '').toUpperCase();
+    const isVocal = name.includes('VOZ') || name.includes('VOCAL') || name.includes('MIC') || i < 4;
+    return !isVocal;
+  }).every(c => c.mute);
+
+  const allMuted = channels.length > 0 && channels.every(c => c.mute) && (masterOut?.isMute ?? false);
+
+  return (
+    <div className="mute-groups-bar" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center', background: '#121720', padding: '10px 14px', borderRadius: '8px', border: '1px solid #232e3b', marginBottom: '16px' }}>
+      <span style={{ fontSize: '11px', fontWeight: 'bold', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+        Grupos de Mute Rápidos:
+      </span>
+      <button
+        type="button"
+        disabled={busy || state?.writeInProgress}
+        className={`btn-mute-panic ${allMuted ? 'active-mute' : ''}`}
+        style={{
+          background: allMuted ? '#ef4444' : '#7f1d1d',
+          color: '#fff',
+          fontWeight: 'bold',
+          padding: '6px 14px',
+          borderRadius: '6px',
+          border: '1px solid #ef4444',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px',
+          fontSize: '12px'
+        }}
+        onClick={async () => {
+          await action('mute-group', { group: 'all', mute: !allMuted });
+          onToast?.(allMuted ? 'Todos os canais desmutados' : '🛑 PÂNICO: Todos os canais e Master mutados!');
+        }}
+      >
+        <AlertOctagon size={14} /> {allMuted ? 'PÂNICO ATIVO (MUTADO)' : '🛑 PÂNICO (Mute Geral)'}
+      </button>
+
+      <button
+        type="button"
+        disabled={busy || state?.writeInProgress}
+        className={`btn-mute-vocais ${vocaisMuted ? 'active-mute' : ''}`}
+        style={{
+          background: vocaisMuted ? '#f97316' : '#2d241c',
+          color: vocaisMuted ? '#000' : '#f97316',
+          fontWeight: 'bold',
+          padding: '6px 12px',
+          borderRadius: '6px',
+          border: '1px solid #f97316',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px',
+          fontSize: '12px'
+        }}
+        onClick={async () => {
+          await action('mute-group', { group: 'vocals', mute: !vocaisMuted });
+          onToast?.(vocaisMuted ? 'Vocais desmutados' : '🎤 Vocais mutados');
+        }}
+      >
+        <Mic size={14} /> {vocaisMuted ? 'VOCAIS MUTADOS' : 'Mute Vocais'}
+      </button>
+
+      <button
+        type="button"
+        disabled={busy || state?.writeInProgress}
+        className={`btn-mute-banda ${bandaMuted ? 'active-mute' : ''}`}
+        style={{
+          background: bandaMuted ? '#a855f7' : '#251b2e',
+          color: bandaMuted ? '#fff' : '#c084fc',
+          fontWeight: 'bold',
+          padding: '6px 12px',
+          borderRadius: '6px',
+          border: '1px solid #a855f7',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px',
+          fontSize: '12px'
+        }}
+        onClick={async () => {
+          await action('mute-group', { group: 'band', mute: !bandaMuted });
+          onToast?.(bandaMuted ? 'Banda desmutada' : '🎸 Banda mutada');
+        }}
+      >
+        <Music2 size={14} /> {bandaMuted ? 'BANDA MUTADA' : 'Mute Banda'}
+      </button>
+
+      <button
+        type="button"
+        disabled={busy || state?.writeInProgress}
+        style={{
+          background: '#1e293b',
+          color: '#cbd5e1',
+          padding: '6px 12px',
+          borderRadius: '6px',
+          border: '1px solid #334155',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px',
+          fontSize: '12px'
+        }}
+        onClick={async () => {
+          await action('mute-group', { group: 'clear', mute: false });
+          onToast?.('🔊 Todos os canais foram desmutados');
+        }}
+      >
+        <VolumeX size={14} /> Desmutar Todos
+      </button>
+    </div>
   );
 }
 
@@ -77,9 +218,17 @@ export default function LiveDesk({ tab }) {
     return (
       <section className="panel empty-live">
         <Radio size={36} />
-        <h2>{status.connected ? 'Aguardando a primeira leitura…' : 'Conecte a DB20P para abrir o mixer real'}</h2>
-        <p>Use “Conectar à mesa” acima. Os canais aparecerão quando o equipamento responder.</p>
-        <p>Você pode testar e explorar os controles na opção Demonstração enquanto a mesa física não estiver conectada.</p>
+        <h2>{status.connected ? 'Aguardando a primeira leitura…' : 'Conecte a DB20P ou teste no Modo Simulação'}</h2>
+        <p>Use “Conectar à mesa” acima para conectar à DB20P em 192.168.18.162.</p>
+        <p>Ou ative o modo de simulação para testar todos os 16 canais, equalizadores, dinâmicas e efeitos offline agora mesmo!</p>
+        <button
+          type="button"
+          className="btn-simulate"
+          style={{ background: '#58bfa6', color: '#000', fontWeight: 'bold', padding: '10px 20px', borderRadius: '6px', border: 'none', cursor: 'pointer', marginTop: '10px' }}
+          onClick={() => action('simulate-snapshot')}
+        >
+          Ativar Modo Simulação Offline (Testar sem a Mesa)
+        </button>
       </section>
     );
   }
@@ -135,6 +284,8 @@ export default function LiveDesk({ tab }) {
               <ShieldCheck size={12} /> {state.capabilities?.channel1Fader ? 'Controle Físico Completo' : 'Somente leitura'}
             </span>
           </div>
+
+          <MuteGroupsBar channels={channels} masterOut={masterOut} onToast={showMsg} />
 
           <div className="mixer real-mixer">
             <div className="mixer-top">
@@ -352,6 +503,12 @@ export default function LiveDesk({ tab }) {
         <RealDynPanel channel={channel} rawChannel={rawChannel} channels={channels} onSelect={setSelected} onToast={showMsg} />
       ) : tab === 'Buses' ? (
         <RealBusesPanel channel={channel} rawChannel={rawChannel} channels={channels} onSelect={setSelected} busModel={snapshot.raw?.busModel} onToast={showMsg} />
+      ) : tab === 'Efeitos FX' ? (
+        <RealFxPanel onToast={showMsg} />
+      ) : tab === 'GEQ Master' ? (
+        <RealGeqPanel onToast={showMsg} />
+      ) : tab === 'Cenas' ? (
+        <SceneManager onToast={showMsg} />
       ) : tab === 'Analisador' ? (
         <RealAnalyzerPanel channel={channel} rawChannel={rawChannel} channels={channels} onSelect={setSelected} onToast={showMsg} />
       ) : (

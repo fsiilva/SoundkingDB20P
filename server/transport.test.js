@@ -33,4 +33,69 @@ test('conecta socket de medidores e atualiza meters na recepção',async()=>{
 });
 test('leitura automática envia apenas pedido fixo, preserva snapshot em timeout e para ao desconectar',t=>{t.mock.timers.enable({apis:['setTimeout','setInterval','Date'],now:100000});const transport=new Transport();const writes=[];transport.state.status='connected';transport.state.protocol='tcp';transport.state.port=6400;transport.state.snapshot={channels:[{name:'último estado'}]};transport.socket={write:bytes=>writes.push(bytes.toString('hex')),destroy:()=>{}};try{transport.startAutoRead();assert.equal(writes.length,1);assert.equal(transport.state.autoRead,true);assert.equal(transport.state.readPending,true);t.mock.timers.tick(4000);assert.match(transport.state.snapshotError,/4 segundos/);assert.equal(transport.state.snapshot.channels[0].name,'último estado');t.mock.timers.tick(2000);assert.equal(writes.length,2);assert.ok(writes.every(x=>x==='5a5a5a5a5a5a0000000100000000'));transport.disconnect();t.mock.timers.tick(12000);assert.equal(writes.length,2);assert.equal(transport.state.autoRead,false)}finally{transport.disconnect();t.mock.timers.reset()}});
 
+test('simulateOffline carrega canais reais, define status simulated e emite medidores',async()=>{
+ const t=new Transport();
+ try{
+  t.simulateOffline();
+  assert.equal(t.state.status,'simulated');
+  assert.equal(t.state.host,'192.168.18.162');
+  assert.equal(t.state.port,6400);
+  assert.equal(t.state.snapshot?.channels?.length,16);
+  assert.equal(t.state.snapshot.channels[0].name,'BATERIA');
+  assert.ok(t.state.meters?.channels?.length===16);
+  assert.ok(typeof t.state.meters?.master?.left==='number');
+ }finally{
+  t.disconnect();
+ }
+});
+
+test('applyMuteGroup muta todos os canais no grupo all, vocais e limpa com clear',async()=>{
+ const t=new Transport();
+ try{
+  t.simulateOffline();
+  await t.applyMuteGroup({group:'all',mute:true});
+  assert.ok(t.state.snapshot.channels.every(c=>c.mute===true));
+  assert.equal(t.state.snapshot.master.mute,true);
+
+  await t.applyMuteGroup({group:'clear',mute:false});
+  assert.ok(t.state.snapshot.channels.every(c=>c.mute===false));
+  assert.equal(t.state.snapshot.master.mute,false);
+
+  await t.applyMuteGroup({group:'vocals',mute:true});
+  const chVoz=t.state.snapshot.channels.filter((c,i)=>{
+   const n=(c.name||'').toUpperCase();
+   return n.includes('VOZ')||n.includes('VOCAL')||n.includes('MIC')||i<4;
+  });
+  assert.ok(chVoz.length>0);
+  assert.ok(chVoz.every(c=>c.mute===true));
+ }finally{
+  t.disconnect();
+ }
+});
+
+test('applyScene aplica canais, faders e master na mesa offline/simulada',async()=>{
+ const t=new Transport();
+ try{
+  t.simulateOffline();
+  const scene={
+   master:{fader:750,mute:false},
+   channels:[
+    {moduleId:0,faderRaw:680,mute:true,pan:10},
+    {moduleId:1,faderRaw:720,mute:false,pan:-15}
+   ]
+  };
+  await t.applyScene(scene);
+  assert.equal(t.state.snapshot.master.fader,750);
+  assert.equal(t.state.snapshot.channels[0].faderRaw,680);
+  assert.equal(t.state.snapshot.channels[0].mute,true);
+  assert.equal(t.state.snapshot.channels[0].pan,10);
+  assert.equal(t.state.snapshot.channels[1].faderRaw,720);
+  assert.equal(t.state.snapshot.channels[1].mute,false);
+  assert.equal(t.state.snapshot.channels[1].pan,-15);
+ }finally{
+  t.disconnect();
+ }
+});
+
+
 
