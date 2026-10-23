@@ -4,6 +4,7 @@ import {channel1Target,channel1Control,profile}from'./channel1-policy.js';
 import {setTimeout as delay}from'node:timers/promises';
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import {SnapshotDecoder,SNAPSHOT_REQUEST,snapshotFromStream,encodeOutput110,encodeEq104,encodeDynamic106,encodeInput102,encodeMaster114,encodeBus108} from './db20p.js';
 import {MeterDecoder} from './meter-decoder.js';
 import net from 'node:net';
@@ -282,8 +283,15 @@ export class Transport extends EventEmitter {
  simulateOffline(filePath='capturas/analise-inicial/response-6400.bin'){
   this.disconnect();
   this.reset();
-  const fullPath=fs.existsSync(filePath)?filePath:path.resolve(process.cwd(),filePath);
-  if(fs.existsSync(fullPath)){
+  const __dirname = path.dirname(fileURLToPath(import.meta.url));
+  const candidates = [
+    filePath,
+    path.resolve(process.cwd(), filePath),
+    path.resolve(__dirname, 'response-6400.bin'),
+    path.resolve(__dirname, '../capturas/analise-inicial/response-6400.bin'),
+  ];
+  const fullPath = candidates.find(p => p && fs.existsSync(p));
+  if(fullPath){
    const bin=fs.readFileSync(fullPath);
    this.state.snapshot=snapshotFromStream(bin);
    if(this.state.snapshot){

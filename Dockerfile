@@ -37,9 +37,8 @@ RUN npm ci --omit=dev && npm cache clean --force
 # Copia o frontend compilado do estágio anterior
 COPY --from=builder /app/dist ./dist
 
-# Copia o servidor backend e dados de captura para simulação offline
+# Copia o servidor backend (incluindo snapshot de simulação offline response-6400.bin)
 COPY server ./server
-COPY capturas ./capturas
 
 # Porta padrão de escuta da aplicação
 EXPOSE 8787

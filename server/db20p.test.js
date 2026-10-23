@@ -137,8 +137,12 @@ test('iterFrames detecta frames completos, parciais e múltiplos', () => {
 });
 
 test('replay de captura real: decodifica snapshot da DB20P e confirma canais reais', () => {
-  const realCapturePath = new URL('../capturas/analise-inicial/response-6400.bin', import.meta.url);
-  if (!existsSync(realCapturePath)) return;
+  const candidates = [
+    new URL('./response-6400.bin', import.meta.url),
+    new URL('../capturas/analise-inicial/response-6400.bin', import.meta.url),
+  ];
+  const realCapturePath = candidates.find(u => existsSync(u));
+  if (!realCapturePath) return;
   const bin = readFileSync(realCapturePath);
 
   // O stream real tem 16448 bytes (Frame 1 ID=1 + Frame 2 ID=195)
