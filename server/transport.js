@@ -7,8 +7,8 @@ import {MeterDecoder} from './meter-decoder.js';
 import net from 'node:net';
 import dgram from 'node:dgram';
 export class Transport extends EventEmitter {
- constructor({allowChannel1Write=profile.channel1FaderEnabled}={}){super();this.allowChannel1Write=allowChannel1Write;this.socket=null;this.meterSocket=null;this.generation=0;this.syncTimer=null;this.readTimer=null;this.reset();this.realtime=new RealtimeFader(this)}
- reset(){this.decoder=new SnapshotDecoder();this.meterDecoder=new MeterDecoder();this.state={status:'disconnected',protocol:null,host:null,port:null,bytesReceived:0,packetsReceived:0,error:null,logs:[],localPort:null,snapshot:null,snapshotRequestedAt:null,decodeError:null,snapshotError:null,bytesSent:0,autoRead:false,readPending:false,writeInProgress:false,lastWrite:null,activeFader:null,meters:null,meterStatus:'disconnected',meterError:null,capabilities:{channel1Fader:this.allowChannel1Write,faders:this.allowChannel1Write,maxLiveFaderRaw:1000,channel1Pan:!!profile.channel1PanEnabled,channel1MuteOn:this.allowChannel1Write,maxFaderRaw:profile.maxRaw}}}
+ constructor({allowChannel1Write=profile.channel1FaderEnabled,allowRead=true}={}){super();this.allowChannel1Write=allowChannel1Write;this.allowRead=allowRead;this.socket=null;this.meterSocket=null;this.generation=0;this.syncTimer=null;this.readTimer=null;this.reset();this.realtime=new RealtimeFader(this)}
+ reset(){this.decoder=new SnapshotDecoder();this.meterDecoder=new MeterDecoder();this.state={status:'disconnected',protocol:null,host:null,port:null,bytesReceived:0,packetsReceived:0,error:null,logs:[],localPort:null,snapshot:null,snapshotRequestedAt:null,decodeError:null,snapshotError:null,bytesSent:0,autoRead:false,readPending:false,writeInProgress:false,lastWrite:null,activeFader:null,meters:null,meterStatus:'disconnected',meterError:null,permissions:{allowRead:this.allowRead,writeEnabled:this.allowChannel1Write},capabilities:{channel1Fader:this.allowChannel1Write,faders:this.allowChannel1Write,maxLiveFaderRaw:1000,channel1Pan:!!profile.channel1PanEnabled,channel1MuteOn:this.allowChannel1Write,maxFaderRaw:profile.maxRaw}}}
  stopTimers(){clearInterval(this.syncTimer);clearTimeout(this.readTimer);this.syncTimer=null;this.readTimer=null;this.state.autoRead=false;this.state.readPending=false}
  log(data,remote){
   this.state.bytesReceived+=data.length;this.state.packetsReceived++;
@@ -17,6 +17,7 @@ export class Transport extends EventEmitter {
  }
  disconnect(){this.generation++;this.realtime?.abort('Conexão encerrada.');this.stopTimers();if(this.meterSocket){try{this.meterSocket.destroy()}catch{}this.meterSocket=null}if(this.socket){if(this.state.protocol==='tcp')this.socket.destroy();else{try{this.socket.close()}catch{}}}this.socket=null;this.state.status='disconnected';this.state.meterStatus='disconnected'}
  requestSnapshot(writeRead=false){
+  if(!this.allowRead)throw Error('Leitura de rede desativada (allowRead=false). A leitura é separada da escrita.');
   if(this.state.status!=='connected'||this.state.protocol!=='tcp'||this.state.port!==6400)throw Error('Conecte via TCP na porta 6400.');
   const now=Date.now();if(this.state.readPending)throw Error('A leitura anterior ainda está em andamento.');
   if(this.state.snapshotRequestedAt&&now-Date.parse(this.state.snapshotRequestedAt)<(writeRead&&this.state.writeInProgress?250:5000))throw Error('Aguarde 5 segundos entre leituras.');
@@ -25,6 +26,7 @@ export class Transport extends EventEmitter {
   clearTimeout(this.readTimer);this.readTimer=setTimeout(()=>{this.state.readPending=false;this.state.snapshotError='A mesa não respondeu à leitura em 4 segundos. Últimos dados preservados.'},4000);this.readTimer.unref?.();return this.state;
  }
  startAutoRead(){
+  if(!this.allowRead)throw Error('Leitura de rede desativada (allowRead=false).');
   if(this.state.writeInProgress)throw Error('Aguarde a confirmação do ajuste.');
   if(this.state.status!=='connected'||this.state.protocol!=='tcp'||this.state.port!==6400)throw Error('Leitura automática exige TCP 6400.');
   clearInterval(this.syncTimer);this.state.autoRead=true;
