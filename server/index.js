@@ -115,6 +115,12 @@ const server = http.createServer(async (req, res) => {
       if (pathname === '/api/fader/start') return reply(200, await transport.realtime.start(parsed));
       if (pathname === '/api/fader/move') return reply(200, transport.realtime.move(parsed));
       if (pathname === '/api/fader/end') return reply(200, await transport.realtime.end(parsed));
+      if (pathname === '/api/channel/control') return reply(200, await transport.applyChannelControl(parsed));
+      if (pathname === '/api/channel/eq') return reply(200, await transport.applyChannelEq(parsed));
+      if (pathname === '/api/channel/dynamic') return reply(200, await transport.applyChannelDynamic(parsed));
+      if (pathname === '/api/channel/input') return reply(200, await transport.applyChannelInput(parsed));
+      if (pathname === '/api/master') return reply(200, await transport.applyMaster(parsed));
+      if (pathname === '/api/bus-send') return reply(200, await transport.applyBusSend(parsed));
       if (pathname === '/api/channel1-control') return reply(200, await transport.applyChannel1(parsed));
       if (pathname === '/api/channel1-fader') return reply(200, await transport.stepChannel1(parsed));
       if (pathname === '/api/start-sync') return reply(200, transport.startAutoRead());

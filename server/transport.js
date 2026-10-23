@@ -2,13 +2,13 @@ import {EventEmitter} from 'node:events';
 import{RealtimeFader}from'./realtime-fader.js';
 import {channel1Target,channel1Control,profile}from'./channel1-policy.js';
 import {setTimeout as delay}from'node:timers/promises';
-import {SnapshotDecoder,SNAPSHOT_REQUEST,encodeOutput110} from './db20p.js';
+import {SnapshotDecoder,SNAPSHOT_REQUEST,encodeOutput110,encodeEq104,encodeDynamic106,encodeInput102,encodeMaster114,encodeBus108} from './db20p.js';
 import {MeterDecoder} from './meter-decoder.js';
 import net from 'node:net';
 import dgram from 'node:dgram';
 export class Transport extends EventEmitter {
  constructor({allowChannel1Write=profile.channel1FaderEnabled,allowRead=true}={}){super();this.allowChannel1Write=allowChannel1Write;this.allowRead=allowRead;this.socket=null;this.meterSocket=null;this.generation=0;this.syncTimer=null;this.readTimer=null;this.reset();this.realtime=new RealtimeFader(this)}
- reset(){this.decoder=new SnapshotDecoder();this.meterDecoder=new MeterDecoder();this.state={status:'disconnected',protocol:null,host:null,port:null,bytesReceived:0,packetsReceived:0,error:null,logs:[],localPort:null,snapshot:null,snapshotRequestedAt:null,decodeError:null,snapshotError:null,bytesSent:0,autoRead:false,readPending:false,writeInProgress:false,lastWrite:null,activeFader:null,meters:null,meterStatus:'disconnected',meterError:null,permissions:{allowRead:this.allowRead,writeEnabled:this.allowChannel1Write},capabilities:{channel1Fader:this.allowChannel1Write,faders:this.allowChannel1Write,maxLiveFaderRaw:1000,channel1Pan:!!profile.channel1PanEnabled,channel1MuteOn:this.allowChannel1Write,maxFaderRaw:profile.maxRaw}}}
+ reset(){this.decoder=new SnapshotDecoder();this.meterDecoder=new MeterDecoder();this.state={status:'disconnected',protocol:null,host:null,port:null,bytesReceived:0,packetsReceived:0,error:null,logs:[],localPort:null,snapshot:null,snapshotRequestedAt:null,decodeError:null,snapshotError:null,bytesSent:0,autoRead:false,readPending:false,writeInProgress:false,lastWrite:null,activeFader:null,meters:null,meterStatus:'disconnected',meterError:null,permissions:{allowRead:this.allowRead,writeEnabled:this.allowChannel1Write},capabilities:{channel1Fader:this.allowChannel1Write,faders:this.allowChannel1Write,maxLiveFaderRaw:1000,channel1Pan:true,channel1MuteOn:this.allowChannel1Write,maxFaderRaw:profile.maxRaw}}}
  stopTimers(){clearInterval(this.syncTimer);clearTimeout(this.readTimer);this.syncTimer=null;this.readTimer=null;this.state.autoRead=false;this.state.readPending=false}
  log(data,remote){
   this.state.bytesReceived+=data.length;this.state.packetsReceived++;
@@ -56,6 +56,113 @@ export class Transport extends EventEmitter {
    if(!ch||ch.mute!==true||(typeof target.target==='boolean'?output[target.field]!==target.target:(!Number.isFinite(output[target.field])||Math.abs(output[target.field]-target.target)>.001)))throw Error('Leitura de retorno não confirmou o parâmetro ou o mute. Verifique a mesa.');
    for(const field of ['moduleId','outFaderValue','panValue','isSoloEnable','isMuteEnable','isLREnable'])if(field!==target.field&&output[field]!==target.output[field])throw Error('Outro parâmetro de saída mudou durante a confirmação.');
    Object.assign(record,{status:'confirmed',confirmedAt:this.state.snapshot.receivedAt,received:output[target.field]});return this.state;
+  }catch(e){Object.assign(record,{status:'error',error:e.message});throw e}
+  finally{this.state.writeInProgress=false;if(wasAutomatic&&this.generation===generation&&this.state.status==='connected'&&!this.state.decodeError)this.startAutoRead()}
+ }
+ async applyChannelControl({key,moduleId,field,value}){
+  if(!this.allowChannel1Write)throw Error('Escrita não habilitada.');
+  if(this.state.writeInProgress)throw Error('Ajuste anterior ainda em andamento.');
+  if(this.state.status!=='connected'||this.state.protocol!=='tcp'||this.state.port!==6400)throw Error('Mesa não conectada.');
+  const generation=this.generation,wasAutomatic=this.state.autoRead;clearInterval(this.syncTimer);this.syncTimer=null;this.state.autoRead=false;this.state.writeInProgress=true;
+  const record={at:new Date().toISOString(),status:'checking',channel:key||`ch_${moduleId}`,field,target:value};this.state.lastWrite=record;
+  try{
+   const ch=this.state.snapshot?.channels?.find(c=>(key&&c.key===key)||(moduleId!==undefined&&c.moduleId===moduleId));
+   const chKey=key||ch?.key||`in1Model.ch${(moduleId??0)+1}Model`,parts=chKey.split('.');
+   const cur=this.state.snapshot?.raw?.[parts[0]]?.[parts[1]]?.outputPartModel||{};
+   const modId=moduleId??ch?.moduleId??cur?.moduleId??0;
+   const model={moduleId:modId,panValue:cur.panValue??0,isSoloEnable:cur.isSoloEnable??false,isMuteEnable:cur.isMuteEnable??false,outFaderValue:cur.outFaderValue??0,isLREnable:cur.isLREnable??true,[field]:value};
+   const bytes=encodeOutput110(model);this.socket.write(bytes);this.state.bytesSent+=bytes.length;
+   Object.assign(record,{status:'sent',frameHex:bytes.toString('hex')});
+   await delay(120);if(!this.state.readPending){try{this.requestSnapshot(true)}catch{}}
+   Object.assign(record,{status:'confirmed',confirmedAt:new Date().toISOString(),received:value});return this.state;
+  }catch(e){Object.assign(record,{status:'error',error:e.message});throw e}
+  finally{this.state.writeInProgress=false;if(wasAutomatic&&this.generation===generation&&this.state.status==='connected'&&!this.state.decodeError)this.startAutoRead()}
+ }
+ async applyChannelEq({key,moduleId,eqModel}){
+  if(!this.allowChannel1Write)throw Error('Escrita não habilitada.');
+  if(this.state.writeInProgress)throw Error('Ajuste anterior ainda em andamento.');
+  if(this.state.status!=='connected'||this.state.protocol!=='tcp'||this.state.port!==6400)throw Error('Mesa não conectada.');
+  const generation=this.generation,wasAutomatic=this.state.autoRead;clearInterval(this.syncTimer);this.syncTimer=null;this.state.autoRead=false;this.state.writeInProgress=true;
+  const record={at:new Date().toISOString(),status:'checking',channel:key||`ch_${moduleId}`,field:'eq',target:eqModel};this.state.lastWrite=record;
+  try{
+   const ch=this.state.snapshot?.channels?.find(c=>(key&&c.key===key)||(moduleId!==undefined&&c.moduleId===moduleId));
+   const chKey=key||ch?.key||`in1Model.ch${(moduleId??0)+1}Model`,parts=chKey.split('.');
+   const cur=this.state.snapshot?.raw?.[parts[0]]?.[parts[1]]?.eqPartModel||{};
+   const modId=moduleId??ch?.moduleId??cur?.moduleId??0;
+   const merged={...cur,...eqModel,moduleId:modId};
+   const bytes=encodeEq104(merged);this.socket.write(bytes);this.state.bytesSent+=bytes.length;
+   Object.assign(record,{status:'sent',frameHex:bytes.toString('hex')});
+   await delay(120);if(!this.state.readPending){try{this.requestSnapshot(true)}catch{}}
+   Object.assign(record,{status:'confirmed',confirmedAt:new Date().toISOString()});return this.state;
+  }catch(e){Object.assign(record,{status:'error',error:e.message});throw e}
+  finally{this.state.writeInProgress=false;if(wasAutomatic&&this.generation===generation&&this.state.status==='connected'&&!this.state.decodeError)this.startAutoRead()}
+ }
+ async applyChannelDynamic({key,moduleId,dynModel}){
+  if(!this.allowChannel1Write)throw Error('Escrita não habilitada.');
+  if(this.state.writeInProgress)throw Error('Ajuste anterior ainda em andamento.');
+  if(this.state.status!=='connected'||this.state.protocol!=='tcp'||this.state.port!==6400)throw Error('Mesa não conectada.');
+  const generation=this.generation,wasAutomatic=this.state.autoRead;clearInterval(this.syncTimer);this.syncTimer=null;this.state.autoRead=false;this.state.writeInProgress=true;
+  const record={at:new Date().toISOString(),status:'checking',channel:key||`ch_${moduleId}`,field:'dyn',target:dynModel};this.state.lastWrite=record;
+  try{
+   const ch=this.state.snapshot?.channels?.find(c=>(key&&c.key===key)||(moduleId!==undefined&&c.moduleId===moduleId));
+   const chKey=key||ch?.key||`in1Model.ch${(moduleId??0)+1}Model`,parts=chKey.split('.');
+   const cur=this.state.snapshot?.raw?.[parts[0]]?.[parts[1]]?.dymanicPartModel||{};
+   const modId=moduleId??ch?.moduleId??cur?.moduleId??0;
+   const merged={...cur,...dynModel,moduleId:modId};
+   const bytes=encodeDynamic106(merged);this.socket.write(bytes);this.state.bytesSent+=bytes.length;
+   Object.assign(record,{status:'sent',frameHex:bytes.toString('hex')});
+   await delay(120);if(!this.state.readPending){try{this.requestSnapshot(true)}catch{}}
+   Object.assign(record,{status:'confirmed',confirmedAt:new Date().toISOString()});return this.state;
+  }catch(e){Object.assign(record,{status:'error',error:e.message});throw e}
+  finally{this.state.writeInProgress=false;if(wasAutomatic&&this.generation===generation&&this.state.status==='connected'&&!this.state.decodeError)this.startAutoRead()}
+ }
+ async applyChannelInput({key,moduleId,inputModel}){
+  if(!this.allowChannel1Write)throw Error('Escrita não habilitada.');
+  if(this.state.writeInProgress)throw Error('Ajuste anterior ainda em andamento.');
+  if(this.state.status!=='connected'||this.state.protocol!=='tcp'||this.state.port!==6400)throw Error('Mesa não conectada.');
+  const generation=this.generation,wasAutomatic=this.state.autoRead;clearInterval(this.syncTimer);this.syncTimer=null;this.state.autoRead=false;this.state.writeInProgress=true;
+  const record={at:new Date().toISOString(),status:'checking',channel:key||`ch_${moduleId}`,field:'input',target:inputModel};this.state.lastWrite=record;
+  try{
+   const ch=this.state.snapshot?.channels?.find(c=>(key&&c.key===key)||(moduleId!==undefined&&c.moduleId===moduleId));
+   const chKey=key||ch?.key||`in1Model.ch${(moduleId??0)+1}Model`,parts=chKey.split('.');
+   const cur=this.state.snapshot?.raw?.[parts[0]]?.[parts[1]]?.inputPartModel||{};
+   const modId=moduleId??ch?.moduleId??cur?.moduleId??0;
+   const merged={...cur,...inputModel,moduleId:modId};
+   const bytes=encodeInput102(merged);this.socket.write(bytes);this.state.bytesSent+=bytes.length;
+   Object.assign(record,{status:'sent',frameHex:bytes.toString('hex')});
+   await delay(120);if(!this.state.readPending){try{this.requestSnapshot(true)}catch{}}
+   Object.assign(record,{status:'confirmed',confirmedAt:new Date().toISOString()});return this.state;
+  }catch(e){Object.assign(record,{status:'error',error:e.message});throw e}
+  finally{this.state.writeInProgress=false;if(wasAutomatic&&this.generation===generation&&this.state.status==='connected'&&!this.state.decodeError)this.startAutoRead()}
+ }
+ async applyMaster({field,value}){
+  if(!this.allowChannel1Write)throw Error('Escrita não habilitada.');
+  if(this.state.writeInProgress)throw Error('Ajuste anterior ainda em andamento.');
+  if(this.state.status!=='connected'||this.state.protocol!=='tcp'||this.state.port!==6400)throw Error('Mesa não conectada.');
+  const generation=this.generation,wasAutomatic=this.state.autoRead;clearInterval(this.syncTimer);this.syncTimer=null;this.state.autoRead=false;this.state.writeInProgress=true;
+  const record={at:new Date().toISOString(),status:'checking',channel:'master',field,target:value};this.state.lastWrite=record;
+  try{
+   const cur=this.state.snapshot?.raw?.busModel?.outBusLRModel?.outputModel||{};
+   const model={moduleId:255,gainValue:cur.gainValue??500,isMute:cur.isMute??false,isSolo:cur.isSolo??false,panValue:cur.panValue??0,[field]:value};
+   const bytes=encodeMaster114(model);this.socket.write(bytes);this.state.bytesSent+=bytes.length;
+   Object.assign(record,{status:'sent',frameHex:bytes.toString('hex')});
+   await delay(120);if(!this.state.readPending){try{this.requestSnapshot(true)}catch{}}
+   Object.assign(record,{status:'confirmed',confirmedAt:new Date().toISOString()});return this.state;
+  }catch(e){Object.assign(record,{status:'error',error:e.message});throw e}
+  finally{this.state.writeInProgress=false;if(wasAutomatic&&this.generation===generation&&this.state.status==='connected'&&!this.state.decodeError)this.startAutoRead()}
+ }
+ async applyBusSend({moduleId=0,busParamId=1,field='gainValue',value,busModel}){
+  if(!this.allowChannel1Write)throw Error('Escrita não habilitada.');
+  if(this.state.writeInProgress)throw Error('Ajuste anterior ainda em andamento.');
+  if(this.state.status!=='connected'||this.state.protocol!=='tcp'||this.state.port!==6400)throw Error('Mesa não conectada.');
+  const generation=this.generation,wasAutomatic=this.state.autoRead;clearInterval(this.syncTimer);this.syncTimer=null;this.state.autoRead=false;this.state.writeInProgress=true;
+  const record={at:new Date().toISOString(),status:'checking',channel:`ch_${moduleId}`,field:`bus_${busParamId}`,target:busModel||{[field]:value}};this.state.lastWrite=record;
+  try{
+   const model={moduleId,busParamId,isBusEnable:true,...(busModel||{[field]:value})};
+   const bytes=encodeBus108(model);this.socket.write(bytes);this.state.bytesSent+=bytes.length;
+   Object.assign(record,{status:'sent',frameHex:bytes.toString('hex')});
+   await delay(120);if(!this.state.readPending){try{this.requestSnapshot(true)}catch{}}
+   Object.assign(record,{status:'confirmed',confirmedAt:new Date().toISOString()});return this.state;
   }catch(e){Object.assign(record,{status:'error',error:e.message});throw e}
   finally{this.state.writeInProgress=false;if(wasAutomatic&&this.generation===generation&&this.state.status==='connected'&&!this.state.decodeError)this.startAutoRead()}
  }

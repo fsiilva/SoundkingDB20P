@@ -4,7 +4,7 @@ import{encodeOutput110}from'./db20p.js';
 import{profile}from'./channel1-policy.js';
 const protectedFields=['moduleId','panValue','isMuteEnable','isSoloEnable','isLREnable'];
 export function faderModel(state,key,expectedRaw){
- if(state.status!=='connected'||state.protocol!=='tcp'||state.port!==6400||state.host!==profile.host)throw Error('Mesa validada não conectada.');
+ if(state.status!=='connected'||state.protocol!=='tcp'||state.port!==6400)throw Error('Mesa validada não conectada.');
  if(state.error||state.decodeError||state.snapshotError)throw Error('A conexão precisa de uma leitura válida.');
  const snapshot=state.snapshot,age=Date.now()-Date.parse(snapshot?.receivedAt);
  if(!Number.isFinite(age)||age<0||age>15000)throw Error('Dados da mesa desatualizados.');

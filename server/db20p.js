@@ -7,6 +7,11 @@ export { SEND_COMMANDS, SEND_PROTO_GUESS, RECEIVE_HANDLERS, ENM_COMMAND };
 const root = protobuf.Root.fromJSON(JSON.parse(readFileSync(new URL('./schema.json', import.meta.url), 'utf8')));
 const Snapshot = root.lookupType('com.amo.skdmc.data.SKDMCData');
 const Output = root.lookupType('com.amo.skdmc.data.MicInOutputPartModel');
+const Eq = root.lookupType('com.amo.skdmc.data.EqPartModel');
+const Dynamic = root.lookupType('com.amo.skdmc.data.MicInDynamicPartModel');
+const Input = root.lookupType('com.amo.skdmc.data.MicInInputPartModel');
+const BusOutput = root.lookupType('com.amo.skdmc.data.BusOutputModel');
+const MicBus = root.lookupType('com.amo.skdmc.data.MicInBusModel');
 
 export const SNAPSHOT_REQUEST_HEX = '5a5a5a5a5a5a0000000100000000';
 export const SNAPSHOT_REQUEST = () => Buffer.from(SNAPSHOT_REQUEST_HEX, 'hex');
@@ -225,6 +230,7 @@ export function channels(raw) {
           rawPan: o?.panValue ?? null,
           mute: o?.isMuteEnable ?? null,
           solo: o?.isSoloEnable ?? null,
+          lr: o?.isLREnable ?? true,
         });
       }
     }
@@ -363,6 +369,86 @@ export function encodeOutput110(model) {
   const header = Buffer.alloc(14);
   header.fill(0x5a, 0, 6);
   header.writeUInt32BE(110, 6);
+  header.writeUInt32BE(payload.length, 10);
+  return Buffer.concat([header, delimited]);
+}
+
+/**
+ * Codificador para comando de Equalizador paramétrico 104 (EqPartModel).
+ */
+export function encodeEq104(model) {
+  const error = Eq.verify(model);
+  if (error) throw Error(error);
+  const sparse = Object.fromEntries(Object.entries(model).filter(([, v]) => v !== 0 && v !== false && v !== null && v !== undefined));
+  const payload = Buffer.from(Eq.encode(Eq.create(sparse)).finish());
+  const delimited = Buffer.from(Eq.encodeDelimited(Eq.create(sparse)).finish());
+  const header = Buffer.alloc(14);
+  header.fill(0x5a, 0, 6);
+  header.writeUInt32BE(104, 6);
+  header.writeUInt32BE(payload.length, 10);
+  return Buffer.concat([header, delimited]);
+}
+
+/**
+ * Codificador para comando de Dinâmica 106 (MicInDynamicPartModel - Gate e Compressor).
+ */
+export function encodeDynamic106(model) {
+  const error = Dynamic.verify(model);
+  if (error) throw Error(error);
+  const sparse = Object.fromEntries(Object.entries(model).filter(([, v]) => v !== 0 && v !== false && v !== null && v !== undefined));
+  const payload = Buffer.from(Dynamic.encode(Dynamic.create(sparse)).finish());
+  const delimited = Buffer.from(Dynamic.encodeDelimited(Dynamic.create(sparse)).finish());
+  const header = Buffer.alloc(14);
+  header.fill(0x5a, 0, 6);
+  header.writeUInt32BE(106, 6);
+  header.writeUInt32BE(payload.length, 10);
+  return Buffer.concat([header, delimited]);
+}
+
+/**
+ * Codificador para comando de Entrada 102 (MicInInputPartModel - Phantom 48V, Fase, HPF, Ganho).
+ */
+export function encodeInput102(model) {
+  const error = Input.verify(model);
+  if (error) throw Error(error);
+  const sparse = Object.fromEntries(Object.entries(model).filter(([, v]) => v !== 0 && v !== false && v !== null && v !== undefined));
+  const payload = Buffer.from(Input.encode(Input.create(sparse)).finish());
+  const delimited = Buffer.from(Input.encodeDelimited(Input.create(sparse)).finish());
+  const header = Buffer.alloc(14);
+  header.fill(0x5a, 0, 6);
+  header.writeUInt32BE(102, 6);
+  header.writeUInt32BE(payload.length, 10);
+  return Buffer.concat([header, delimited]);
+}
+
+/**
+ * Codificador para comando de Saída Master / Bus 114 (BusOutputModel - Volume Master LR, Mute Master).
+ */
+export function encodeMaster114(model) {
+  const error = BusOutput.verify(model);
+  if (error) throw Error(error);
+  const sparse = Object.fromEntries(Object.entries(model).filter(([, v]) => v !== 0 && v !== false && v !== null && v !== undefined));
+  const payload = Buffer.from(BusOutput.encode(BusOutput.create(sparse)).finish());
+  const delimited = Buffer.from(BusOutput.encodeDelimited(BusOutput.create(sparse)).finish());
+  const header = Buffer.alloc(14);
+  header.fill(0x5a, 0, 6);
+  header.writeUInt32BE(114, 6);
+  header.writeUInt32BE(payload.length, 10);
+  return Buffer.concat([header, delimited]);
+}
+
+/**
+ * Codificador para comando de Envio para Bus 108 (MicInBusModel).
+ */
+export function encodeBus108(model) {
+  const error = MicBus.verify(model);
+  if (error) throw Error(error);
+  const sparse = Object.fromEntries(Object.entries(model).filter(([, v]) => v !== 0 && v !== false && v !== null && v !== undefined));
+  const payload = Buffer.from(MicBus.encode(MicBus.create(sparse)).finish());
+  const delimited = Buffer.from(MicBus.encodeDelimited(MicBus.create(sparse)).finish());
+  const header = Buffer.alloc(14);
+  header.fill(0x5a, 0, 6);
+  header.writeUInt32BE(108, 6);
   header.writeUInt32BE(payload.length, 10);
   return Buffer.concat([header, delimited]);
 }
