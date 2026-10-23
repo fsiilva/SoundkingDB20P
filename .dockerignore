@@ -1,0 +1,16 @@
+node_modules
+dist
+.git
+.gitignore
+.venv
+.gemini
+*.log
+.DS_Store
+Thumbs.db
+referencia
+controller 2
+docs
+capturas/comparacoes
+capturas/calibracao-canal1
+capturas/integracao
+capturas/captura-final

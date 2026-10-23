@@ -22,9 +22,27 @@ Para execução separada, use `npm run bridge` e `npm run dev:ui`. Não execute 
 ```sh
 npm test
 npm run build
-# Preview do build; requer a ponte em outro terminal:
+# Iniciar servidor de produção local unificado (porta 8787):
+npm start
+# Preview do build de desenvolvimento; requer a ponte em outro terminal:
 npm run preview -- --port 5173
 ```
+
+## Deploy (EasyPanel / Docker)
+
+O projeto está configurado para deploy com 1 clique no **EasyPanel** usando build multi-stage Docker.
+
+- **Dockerfile**: [Dockerfile](file:///Users/flavio/Downloads/mesa_digital/projeto_mesa/Dockerfile)
+- **Compose**: [docker-compose.yml](file:///Users/flavio/Downloads/mesa_digital/projeto_mesa/docker-compose.yml)
+- **Porta**: `8787` (configurável via variável de ambiente `PORT`)
+- **Healthcheck**: `/api/health`
+- **Guia Completo**: [docs/DEPLOY_EASYPANEL.md](file:///Users/flavio/Downloads/mesa_digital/projeto_mesa/docs/DEPLOY_EASYPANEL.md)
+
+Para testar localmente com Docker Compose:
+```sh
+docker compose up --build
+```
+
 
 ## Mesa real
 

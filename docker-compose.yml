@@ -1,0 +1,16 @@
+services:
+  soundking-db20p:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: soundking-db20p:latest
+    container_name: soundking-db20p
+    restart: unless-stopped
+    ports:
+      - "${PORT:-8787}:8787"
+    environment:
+      - NODE_ENV=production
+      - PORT=8787
+      - HOST=0.0.0.0
+      - ALLOWED_ORIGINS=*
+      - DEFAULT_MIXER_HOST=192.168.18.162
