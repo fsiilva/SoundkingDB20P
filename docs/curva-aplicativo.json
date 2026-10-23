@@ -1,0 +1,19 @@
+{
+  "source": "D-Touch 20 instalado neste Mac",
+  "sha256": "021e29cafab912b418e9b6772e2df55d65c73e5c7110f0f0e14c8fa09c532afb",
+  "methodTable": "0x1000ffe3c InitConvTab",
+  "methodLookup": "0x1000fff54 ConvertFaderValue:",
+  "caller": "0x1000fefa8..0x1000fefc4: outFaderValue -> ConvertFaderValue: -> soma ao nível do medidor",
+  "normalizationAddress": "0x100157710",
+  "normalization": 0.001,
+  "coefficients": {
+    "0x159040": -1.789e-15,
+    "0x159048": 6.199e-12,
+    "0x159050": -8.398e-09,
+    "0x159058": 5.669e-06,
+    "0x159060": -0.002059,
+    "0x159068": 0.4686,
+    "0x159070": -80.51
+  },
+  "meaning": "Curva de ganho usada nos medidores pós-fader do aplicativo; estimativa, não calibração acústica nem unidade física universal."
+}

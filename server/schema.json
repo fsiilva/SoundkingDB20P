@@ -1,0 +1,3503 @@
+{
+  "nested": {
+    "com": {
+      "nested": {
+        "amo": {
+          "nested": {
+            "skdmc": {
+              "nested": {
+                "data": {
+                  "nested": {
+                    "OutBusModel": {
+                      "fields": {
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 1
+                        },
+                        "busName": {
+                          "type": "string",
+                          "id": 2
+                        },
+                        "inputModel": {
+                          "type": ".com.amo.skdmc.data.BusInputModel",
+                          "id": 3
+                        },
+                        "eqModel": {
+                          "type": ".com.amo.skdmc.data.EqPartModel",
+                          "id": 4
+                        },
+                        "inputSourceModel": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceModel",
+                          "id": 5
+                        },
+                        "outputModel": {
+                          "type": ".com.amo.skdmc.data.BusOutputModel",
+                          "id": 6
+                        },
+                        "busCol": {
+                          "type": "int32",
+                          "id": 7
+                        }
+                      }
+                    },
+                    "BusModel": {
+                      "fields": {
+                        "outBus1Model": {
+                          "type": ".com.amo.skdmc.data.OutBusModel",
+                          "id": 1
+                        },
+                        "outBus2Model": {
+                          "type": ".com.amo.skdmc.data.OutBusModel",
+                          "id": 2
+                        },
+                        "outBus3Model": {
+                          "type": ".com.amo.skdmc.data.OutBusModel",
+                          "id": 3
+                        },
+                        "outBus4Model": {
+                          "type": ".com.amo.skdmc.data.OutBusModel",
+                          "id": 4
+                        },
+                        "outBus5Model": {
+                          "type": ".com.amo.skdmc.data.OutBusModel",
+                          "id": 5
+                        },
+                        "outBus6Model": {
+                          "type": ".com.amo.skdmc.data.OutBusModel",
+                          "id": 6
+                        },
+                        "outBus7Model": {
+                          "type": ".com.amo.skdmc.data.OutBusModel",
+                          "id": 7
+                        },
+                        "outBus8Model": {
+                          "type": ".com.amo.skdmc.data.OutBusModel",
+                          "id": 8
+                        },
+                        "outBusLRModel": {
+                          "type": ".com.amo.skdmc.data.OutBusModel",
+                          "id": 9
+                        }
+                      }
+                    },
+                    "BusInputModel": {
+                      "fields": {
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 1
+                        },
+                        "busItem5": {
+                          "type": ".com.amo.skdmc.data.BusInputItemModel",
+                          "id": 2
+                        },
+                        "busItem6": {
+                          "type": ".com.amo.skdmc.data.BusInputItemModel",
+                          "id": 3
+                        },
+                        "busItem7": {
+                          "type": ".com.amo.skdmc.data.BusInputItemModel",
+                          "id": 4
+                        },
+                        "busItem8": {
+                          "type": ".com.amo.skdmc.data.BusInputItemModel",
+                          "id": 5
+                        },
+                        "busItemLR": {
+                          "type": ".com.amo.skdmc.data.BusInputItemModel",
+                          "id": 6
+                        },
+                        "modul1Value": {
+                          "type": "int32",
+                          "id": 7
+                        },
+                        "modul2Value": {
+                          "type": "int32",
+                          "id": 8
+                        },
+                        "delay1Value": {
+                          "type": "int32",
+                          "id": 9
+                        },
+                        "delay2Value": {
+                          "type": "int32",
+                          "id": 10
+                        },
+                        "reverb1Value": {
+                          "type": "int32",
+                          "id": 11
+                        },
+                        "reverb2Value": {
+                          "type": "int32",
+                          "id": 12
+                        },
+                        "geq1Value": {
+                          "type": "int32",
+                          "id": 13
+                        },
+                        "geq2Value": {
+                          "type": "int32",
+                          "id": 14
+                        }
+                      }
+                    },
+                    "BusInputItemModel": {
+                      "fields": {
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 1
+                        },
+                        "busParamId": {
+                          "type": "int32",
+                          "id": 2
+                        },
+                        "isChannelEnable": {
+                          "type": "bool",
+                          "id": 3
+                        },
+                        "isPrefader": {
+                          "type": "bool",
+                          "id": 4
+                        },
+                        "panValue": {
+                          "type": "float",
+                          "id": 5
+                        },
+                        "gainValue": {
+                          "type": "float",
+                          "id": 6
+                        }
+                      }
+                    },
+                    "BusInputSourceModel": {
+                      "fields": {
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 1
+                        },
+                        "ch1": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 2
+                        },
+                        "ch2": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 3
+                        },
+                        "ch3": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 4
+                        },
+                        "ch4": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 5
+                        },
+                        "ch5": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 6
+                        },
+                        "ch6": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 7
+                        },
+                        "ch7": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 8
+                        },
+                        "ch8": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 9
+                        },
+                        "ch9": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 10
+                        },
+                        "ch10": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 11
+                        },
+                        "ch11": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 12
+                        },
+                        "ch12": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 13
+                        },
+                        "st1": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 14
+                        },
+                        "st2": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 15
+                        },
+                        "bus1": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 16
+                        },
+                        "bus2": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 17
+                        },
+                        "bus3": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 18
+                        },
+                        "bus4": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 19
+                        },
+                        "bus5": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 20
+                        },
+                        "bus6": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 21
+                        },
+                        "bus7": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 22
+                        },
+                        "bus8": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 23
+                        },
+                        "spdif": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 24
+                        },
+                        "usb": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceItemModel",
+                          "id": 25
+                        }
+                      }
+                    },
+                    "BusInputSourceItemModel": {
+                      "fields": {
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 1
+                        },
+                        "outModuleId": {
+                          "type": "int32",
+                          "id": 2
+                        },
+                        "gainValue": {
+                          "type": "float",
+                          "id": 3
+                        },
+                        "isEnable": {
+                          "type": "bool",
+                          "id": 4
+                        },
+                        "panValue": {
+                          "type": "float",
+                          "id": 5
+                        },
+                        "isPrefader": {
+                          "type": "bool",
+                          "id": 6
+                        }
+                      }
+                    },
+                    "BusOutputModel": {
+                      "fields": {
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 1
+                        },
+                        "isSolo": {
+                          "type": "bool",
+                          "id": 2
+                        },
+                        "isMute": {
+                          "type": "bool",
+                          "id": 3
+                        },
+                        "isDelayEnable": {
+                          "type": "bool",
+                          "id": 4
+                        },
+                        "delayValue": {
+                          "type": "float",
+                          "id": 5
+                        },
+                        "panValue": {
+                          "type": "float",
+                          "id": 6
+                        },
+                        "gainValue": {
+                          "type": "float",
+                          "id": 7
+                        },
+                        "isSum": {
+                          "type": "bool",
+                          "id": 8
+                        }
+                      }
+                    },
+                    "ImportSceneList": {
+                      "fields": {
+                        "filesExist": {
+                          "type": "bool",
+                          "id": 1
+                        },
+                        "text": {
+                          "type": "string",
+                          "id": 2
+                        },
+                        "sceneFileName": {
+                          "type": "string",
+                          "id": 3,
+                          "rule": "repeated"
+                        }
+                      }
+                    },
+                    "AllBusSendModel": {
+                      "fields": {
+                        "busSendPartModel": {
+                          "type": ".com.amo.skdmc.data.MicInBusSendModel",
+                          "id": 6,
+                          "rule": "repeated"
+                        },
+                        "inputSourceModel": {
+                          "type": ".com.amo.skdmc.data.BusInputSourceModel",
+                          "id": 5,
+                          "rule": "repeated"
+                        }
+                      }
+                    },
+                    "SKDMCData": {
+                      "fields": {
+                        "in1Model": {
+                          "type": ".com.amo.skdmc.data.In1Model",
+                          "id": 1
+                        },
+                        "in2Model": {
+                          "type": ".com.amo.skdmc.data.In2Model",
+                          "id": 2
+                        },
+                        "busModel": {
+                          "type": ".com.amo.skdmc.data.BusModel",
+                          "id": 3
+                        },
+                        "setupModel": {
+                          "type": ".com.amo.skdmc.data.SetupModel",
+                          "id": 4
+                        },
+                        "peqModelList": {
+                          "type": ".com.amo.skdmc.data.PeqModel",
+                          "id": 5,
+                          "rule": "repeated"
+                        },
+                        "dynamicModelList": {
+                          "type": ".com.amo.skdmc.data.DynamicModel",
+                          "id": 6,
+                          "rule": "repeated"
+                        },
+                        "fxgeqModelList": {
+                          "type": ".com.amo.skdmc.data.FxgeqModel",
+                          "id": 7,
+                          "rule": "repeated"
+                        },
+                        "sceneModelList": {
+                          "type": ".com.amo.skdmc.data.SceneModel",
+                          "id": 8,
+                          "rule": "repeated"
+                        },
+                        "sceneGuid": {
+                          "type": "string",
+                          "id": 9
+                        },
+                        "fxdelayModelList": {
+                          "type": ".com.amo.skdmc.data.FxdelayModel",
+                          "id": 10,
+                          "rule": "repeated"
+                        },
+                        "fxmodulModelList": {
+                          "type": ".com.amo.skdmc.data.FxmodulModel",
+                          "id": 11,
+                          "rule": "repeated"
+                        },
+                        "fxreverbModelList": {
+                          "type": ".com.amo.skdmc.data.FxreverbModel",
+                          "id": 12,
+                          "rule": "repeated"
+                        }
+                      }
+                    },
+                    "Command": {
+                      "fields": {
+                        "command": {
+                          "type": ".com.amo.skdmc.data.EnmCommand",
+                          "id": 1
+                        },
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 2
+                        },
+                        "integerParam": {
+                          "type": "int32",
+                          "id": 3
+                        },
+                        "floatParam": {
+                          "type": "float",
+                          "id": 4
+                        },
+                        "boolParam": {
+                          "type": "bool",
+                          "id": 5
+                        },
+                        "sourceModuleId": {
+                          "type": "int32",
+                          "id": 6
+                        },
+                        "strParam": {
+                          "type": "string",
+                          "id": 7
+                        }
+                      }
+                    },
+                    "EnmCommand": {
+                      "values": {
+                        "PlayBtn": 0,
+                        "CopyBtn": 1,
+                        "PastBtn": 2,
+                        "Record_Stop": 3,
+                        "Record_Play": 4,
+                        "Record_FirstSong": 5,
+                        "Record_PrevSong": 6,
+                        "Record_NextSong": 7,
+                        "Record_LastSong": 8,
+                        "Record_ModeChanged": 9,
+                        "Record_Record": 10,
+                        "Scene_Export": 11,
+                        "Scene_GetImportFileList": 12,
+                        "Scene_Import": 13
+                      }
+                    },
+                    "CommandResult": {
+                      "fields": {
+                        "result": {
+                          "type": "bool",
+                          "id": 1
+                        },
+                        "text": {
+                          "type": "string",
+                          "id": 2
+                        }
+                      }
+                    },
+                    "DynamicModel": {
+                      "fields": {
+                        "name": {
+                          "type": "string",
+                          "id": 1
+                        },
+                        "position": {
+                          "type": "int32",
+                          "id": 2
+                        },
+                        "isByPass": {
+                          "type": "bool",
+                          "id": 3
+                        },
+                        "isGateEnable": {
+                          "type": "bool",
+                          "id": 4
+                        },
+                        "gateThresholdValue": {
+                          "type": "float",
+                          "id": 5
+                        },
+                        "gateAttackValue": {
+                          "type": "float",
+                          "id": 6
+                        },
+                        "gateReleaseValue": {
+                          "type": "float",
+                          "id": 7
+                        },
+                        "gateHoldValue": {
+                          "type": "float",
+                          "id": 8
+                        },
+                        "gateDepthValue": {
+                          "type": "float",
+                          "id": 9
+                        },
+                        "isCompressorEnable": {
+                          "type": "bool",
+                          "id": 10
+                        },
+                        "compressorTresholdValue": {
+                          "type": "float",
+                          "id": 11
+                        },
+                        "compressorAttackValue": {
+                          "type": "float",
+                          "id": 12
+                        },
+                        "compressorReleaseValue": {
+                          "type": "float",
+                          "id": 13
+                        },
+                        "compressorGainValue": {
+                          "type": "float",
+                          "id": 14
+                        },
+                        "compressorRatioValue": {
+                          "type": "float",
+                          "id": 15
+                        },
+                        "dynamicByPass": {
+                          "type": "bool",
+                          "id": 16
+                        },
+                        "chainModuleId": {
+                          "type": "int32",
+                          "id": 17
+                        },
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 18
+                        }
+                      }
+                    },
+                    "DynamicLibraryModel": {
+                      "fields": {
+                        "dynamicList": {
+                          "type": ".com.amo.skdmc.data.DynamicModel",
+                          "id": 1,
+                          "rule": "repeated"
+                        }
+                      }
+                    },
+                    "FxdelayModel": {
+                      "fields": {
+                        "gainLSValue": {
+                          "type": "float",
+                          "id": 1
+                        },
+                        "freqLSValue": {
+                          "type": "float",
+                          "id": 2
+                        },
+                        "gainHSValue": {
+                          "type": "float",
+                          "id": 3
+                        },
+                        "freqHSValue": {
+                          "type": "float",
+                          "id": 4
+                        },
+                        "dryWetValue": {
+                          "type": "float",
+                          "id": 5
+                        },
+                        "factorValue": {
+                          "type": "float",
+                          "id": 6
+                        },
+                        "timeValue": {
+                          "type": "float",
+                          "id": 7
+                        },
+                        "typeValue": {
+                          "type": "int32",
+                          "id": 8
+                        },
+                        "tempoValue": {
+                          "type": "float",
+                          "id": 9
+                        },
+                        "feedbackValue": {
+                          "type": "float",
+                          "id": 10
+                        },
+                        "name": {
+                          "type": "string",
+                          "id": 11
+                        },
+                        "position": {
+                          "type": "int32",
+                          "id": 12
+                        },
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 13
+                        }
+                      }
+                    },
+                    "FxdelayLibaryModel": {
+                      "fields": {
+                        "fxdelayList": {
+                          "type": ".com.amo.skdmc.data.FxdelayModel",
+                          "id": 1,
+                          "rule": "repeated"
+                        }
+                      }
+                    },
+                    "FxgeqModel": {
+                      "fields": {
+                        "isByPass": {
+                          "type": "bool",
+                          "id": 1
+                        },
+                        "isNum18": {
+                          "type": "bool",
+                          "id": 2
+                        },
+                        "isNum915": {
+                          "type": "bool",
+                          "id": 3
+                        },
+                        "lrChannel": {
+                          "type": "int32",
+                          "id": 4
+                        },
+                        "fader1": {
+                          "type": "float",
+                          "id": 6
+                        },
+                        "fader2": {
+                          "type": "float",
+                          "id": 7
+                        },
+                        "fader3": {
+                          "type": "float",
+                          "id": 8
+                        },
+                        "fader4": {
+                          "type": "float",
+                          "id": 9
+                        },
+                        "fader5": {
+                          "type": "float",
+                          "id": 10
+                        },
+                        "fader6": {
+                          "type": "float",
+                          "id": 11
+                        },
+                        "fader7": {
+                          "type": "float",
+                          "id": 12
+                        },
+                        "fader8": {
+                          "type": "float",
+                          "id": 13
+                        },
+                        "fader9": {
+                          "type": "float",
+                          "id": 14
+                        },
+                        "fader10": {
+                          "type": "float",
+                          "id": 15
+                        },
+                        "fader11": {
+                          "type": "float",
+                          "id": 16
+                        },
+                        "fader12": {
+                          "type": "float",
+                          "id": 17
+                        },
+                        "fader13": {
+                          "type": "float",
+                          "id": 18
+                        },
+                        "fader14": {
+                          "type": "float",
+                          "id": 19
+                        },
+                        "fader15": {
+                          "type": "float",
+                          "id": 20
+                        },
+                        "name": {
+                          "type": "string",
+                          "id": 21
+                        },
+                        "position": {
+                          "type": "int32",
+                          "id": 22
+                        },
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 23
+                        },
+                        "fader16": {
+                          "type": "float",
+                          "id": 24
+                        },
+                        "fader17": {
+                          "type": "float",
+                          "id": 25
+                        },
+                        "fader18": {
+                          "type": "float",
+                          "id": 26
+                        },
+                        "fader19": {
+                          "type": "float",
+                          "id": 27
+                        },
+                        "fader20": {
+                          "type": "float",
+                          "id": 28
+                        },
+                        "fader21": {
+                          "type": "float",
+                          "id": 29
+                        },
+                        "fader22": {
+                          "type": "float",
+                          "id": 30
+                        },
+                        "fader23": {
+                          "type": "float",
+                          "id": 31
+                        },
+                        "fader24": {
+                          "type": "float",
+                          "id": 32
+                        },
+                        "fader25": {
+                          "type": "float",
+                          "id": 33
+                        },
+                        "fader26": {
+                          "type": "float",
+                          "id": 34
+                        },
+                        "fader27": {
+                          "type": "float",
+                          "id": 35
+                        },
+                        "fader28": {
+                          "type": "float",
+                          "id": 36
+                        },
+                        "fader29": {
+                          "type": "float",
+                          "id": 37
+                        },
+                        "fader30": {
+                          "type": "float",
+                          "id": 38
+                        },
+                        "fader31": {
+                          "type": "float",
+                          "id": 39
+                        },
+                        "isNum1724": {
+                          "type": "bool",
+                          "id": 40
+                        },
+                        "isNum2531": {
+                          "type": "bool",
+                          "id": 41
+                        }
+                      }
+                    },
+                    "FxgeqLibaryModel": {
+                      "fields": {
+                        "fxgeqList": {
+                          "type": ".com.amo.skdmc.data.FxgeqModel",
+                          "id": 1,
+                          "rule": "repeated"
+                        }
+                      }
+                    },
+                    "FxmodulModel": {
+                      "fields": {
+                        "typeValue": {
+                          "type": "int32",
+                          "id": 1
+                        },
+                        "gainLSValue": {
+                          "type": "float",
+                          "id": 2
+                        },
+                        "freqLSValue": {
+                          "type": "float",
+                          "id": 3
+                        },
+                        "gainHSValue": {
+                          "type": "float",
+                          "id": 4
+                        },
+                        "freqHSValue": {
+                          "type": "float",
+                          "id": 5
+                        },
+                        "dryWetValue": {
+                          "type": "float",
+                          "id": 6
+                        },
+                        "rateValue": {
+                          "type": "int32",
+                          "id": 7
+                        },
+                        "intensityValue": {
+                          "type": "float",
+                          "id": 8
+                        },
+                        "delayValue": {
+                          "type": "float",
+                          "id": 9
+                        },
+                        "name": {
+                          "type": "string",
+                          "id": 10
+                        },
+                        "position": {
+                          "type": "int32",
+                          "id": 11
+                        },
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 12
+                        }
+                      }
+                    },
+                    "FxmodulLibaryModel": {
+                      "fields": {
+                        "fxmodulList": {
+                          "type": ".com.amo.skdmc.data.FxmodulModel",
+                          "id": 1,
+                          "rule": "repeated"
+                        }
+                      }
+                    },
+                    "FxreverbModel": {
+                      "fields": {
+                        "gainLSValue": {
+                          "type": "float",
+                          "id": 1
+                        },
+                        "freqLSValue": {
+                          "type": "float",
+                          "id": 2
+                        },
+                        "gainHSValue": {
+                          "type": "float",
+                          "id": 3
+                        },
+                        "freqHSValue": {
+                          "type": "float",
+                          "id": 4
+                        },
+                        "dryWetValue": {
+                          "type": "float",
+                          "id": 5
+                        },
+                        "typeValue": {
+                          "type": "int32",
+                          "id": 6
+                        },
+                        "delayValue": {
+                          "type": "float",
+                          "id": 7
+                        },
+                        "timeValue": {
+                          "type": "float",
+                          "id": 8
+                        },
+                        "name": {
+                          "type": "string",
+                          "id": 10
+                        },
+                        "position": {
+                          "type": "int32",
+                          "id": 11
+                        },
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 12
+                        }
+                      }
+                    },
+                    "FxreverbLibaryModel": {
+                      "fields": {
+                        "fxreverbList": {
+                          "type": ".com.amo.skdmc.data.FxreverbModel",
+                          "id": 1,
+                          "rule": "repeated"
+                        }
+                      }
+                    },
+                    "MeterLevelData": {
+                      "fields": {
+                        "gainValue": {
+                          "type": "bytes",
+                          "id": 1
+                        }
+                      }
+                    },
+                    "MusicItem": {
+                      "fields": {
+                        "fileName": {
+                          "type": "string",
+                          "id": 1
+                        },
+                        "filePathName": {
+                          "type": "string",
+                          "id": 2
+                        }
+                      }
+                    },
+                    "MusicList": {
+                      "fields": {
+                        "items": {
+                          "type": ".com.amo.skdmc.data.MusicItem",
+                          "id": 1,
+                          "rule": "repeated"
+                        }
+                      }
+                    },
+                    "PeqModel": {
+                      "fields": {
+                        "name": {
+                          "type": "string",
+                          "id": 1
+                        },
+                        "position": {
+                          "type": "int32",
+                          "id": 2
+                        },
+                        "byPass": {
+                          "type": "bool",
+                          "id": 3
+                        },
+                        "highFreqValue": {
+                          "type": "float",
+                          "id": 4
+                        },
+                        "highGainValue": {
+                          "type": "float",
+                          "id": 5
+                        },
+                        "highQValue": {
+                          "type": "float",
+                          "id": 6
+                        },
+                        "highMidFreqValue": {
+                          "type": "float",
+                          "id": 7
+                        },
+                        "highMidGainValue": {
+                          "type": "float",
+                          "id": 8
+                        },
+                        "highMidQValue": {
+                          "type": "float",
+                          "id": 9
+                        },
+                        "lowMidFreqValue": {
+                          "type": "float",
+                          "id": 10
+                        },
+                        "lowMidGainValue": {
+                          "type": "float",
+                          "id": 11
+                        },
+                        "lowMidQValue": {
+                          "type": "float",
+                          "id": 12
+                        },
+                        "lowFreqValue": {
+                          "type": "float",
+                          "id": 13
+                        },
+                        "lowGainValue": {
+                          "type": "float",
+                          "id": 14
+                        },
+                        "lowQValue": {
+                          "type": "float",
+                          "id": 15
+                        },
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 16
+                        },
+                        "highType": {
+                          "type": "int32",
+                          "id": 17
+                        },
+                        "lowType": {
+                          "type": "int32",
+                          "id": 18
+                        }
+                      }
+                    },
+                    "PeqLibraryModel": {
+                      "fields": {
+                        "peqList": {
+                          "type": ".com.amo.skdmc.data.PeqModel",
+                          "id": 1,
+                          "rule": "repeated"
+                        }
+                      }
+                    },
+                    "PlayCommand": {
+                      "fields": {
+                        "playMode": {
+                          "type": ".com.amo.skdmc.data.EnmPlayMode",
+                          "id": 1
+                        },
+                        "songPath": {
+                          "type": "string",
+                          "id": 2
+                        },
+                        "songDuration": {
+                          "type": "int32",
+                          "id": 3
+                        },
+                        "currentPosition": {
+                          "type": "int32",
+                          "id": 4
+                        },
+                        "instruction": {
+                          "type": "int32",
+                          "id": 5
+                        },
+                        "isRecord": {
+                          "type": "bool",
+                          "id": 6
+                        },
+                        "isPlay": {
+                          "type": "bool",
+                          "id": 7
+                        },
+                        "recordTimeMs": {
+                          "type": "int64",
+                          "id": 8
+                        }
+                      }
+                    },
+                    "EnmPlayMode": {
+                      "values": {
+                        "Loop": 0,
+                        "Single": 1,
+                        "Queue": 2,
+                        "Random": 3,
+                        "Once": 4
+                      }
+                    },
+                    "SceneModel": {
+                      "fields": {
+                        "checked": {
+                          "type": "bool",
+                          "id": 1
+                        },
+                        "selected": {
+                          "type": "bool",
+                          "id": 2
+                        },
+                        "guid": {
+                          "type": "string",
+                          "id": 3
+                        },
+                        "name": {
+                          "type": "string",
+                          "id": 4
+                        },
+                        "time": {
+                          "type": "string",
+                          "id": 5
+                        }
+                      }
+                    },
+                    "AllData": {
+                      "fields": {
+                        "in1Model": {
+                          "type": ".com.amo.skdmc.data.In1Model",
+                          "id": 1
+                        },
+                        "in2Model": {
+                          "type": ".com.amo.skdmc.data.In2Model",
+                          "id": 2
+                        }
+                      }
+                    },
+                    "MicInBusModel": {
+                      "fields": {
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 1
+                        },
+                        "busParamId": {
+                          "type": "int32",
+                          "id": 2
+                        },
+                        "isBusEnable": {
+                          "type": "bool",
+                          "id": 3
+                        },
+                        "isPrefader": {
+                          "type": "bool",
+                          "id": 4
+                        },
+                        "gainValue": {
+                          "type": "float",
+                          "id": 5
+                        },
+                        "panValue": {
+                          "type": "float",
+                          "id": 6
+                        }
+                      }
+                    },
+                    "MicInBusSendModel": {
+                      "fields": {
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 1
+                        },
+                        "bus1": {
+                          "type": ".com.amo.skdmc.data.MicInBusModel",
+                          "id": 2
+                        },
+                        "bus2": {
+                          "type": ".com.amo.skdmc.data.MicInBusModel",
+                          "id": 3
+                        },
+                        "bus3": {
+                          "type": ".com.amo.skdmc.data.MicInBusModel",
+                          "id": 4
+                        },
+                        "bus4": {
+                          "type": ".com.amo.skdmc.data.MicInBusModel",
+                          "id": 5
+                        },
+                        "bus5": {
+                          "type": ".com.amo.skdmc.data.MicInBusModel",
+                          "id": 6
+                        },
+                        "bus6": {
+                          "type": ".com.amo.skdmc.data.MicInBusModel",
+                          "id": 7
+                        },
+                        "bus7": {
+                          "type": ".com.amo.skdmc.data.MicInBusModel",
+                          "id": 8
+                        },
+                        "bus8": {
+                          "type": ".com.amo.skdmc.data.MicInBusModel",
+                          "id": 9
+                        },
+                        "busLnR": {
+                          "type": ".com.amo.skdmc.data.MicInBusModel",
+                          "id": 10
+                        }
+                      }
+                    },
+                    "MicInChannelModel": {
+                      "fields": {
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 1
+                        },
+                        "channelName": {
+                          "type": "string",
+                          "id": 2
+                        },
+                        "inputPartModel": {
+                          "type": ".com.amo.skdmc.data.MicInInputPartModel",
+                          "id": 3
+                        },
+                        "eqPartModel": {
+                          "type": ".com.amo.skdmc.data.EqPartModel",
+                          "id": 4
+                        },
+                        "dymanicPartModel": {
+                          "type": ".com.amo.skdmc.data.MicInDynamicPartModel",
+                          "id": 5
+                        },
+                        "busSendPartModel": {
+                          "type": ".com.amo.skdmc.data.MicInBusSendModel",
+                          "id": 6
+                        },
+                        "outputPartModel": {
+                          "type": ".com.amo.skdmc.data.MicInOutputPartModel",
+                          "id": 7
+                        },
+                        "channelCol": {
+                          "type": "int32",
+                          "id": 8
+                        }
+                      }
+                    },
+                    "In1Model": {
+                      "fields": {
+                        "ch1Model": {
+                          "type": ".com.amo.skdmc.data.MicInChannelModel",
+                          "id": 1
+                        },
+                        "ch2Model": {
+                          "type": ".com.amo.skdmc.data.MicInChannelModel",
+                          "id": 2
+                        },
+                        "ch3Model": {
+                          "type": ".com.amo.skdmc.data.MicInChannelModel",
+                          "id": 3
+                        },
+                        "ch4Model": {
+                          "type": ".com.amo.skdmc.data.MicInChannelModel",
+                          "id": 4
+                        },
+                        "ch5Model": {
+                          "type": ".com.amo.skdmc.data.MicInChannelModel",
+                          "id": 5
+                        },
+                        "ch6Model": {
+                          "type": ".com.amo.skdmc.data.MicInChannelModel",
+                          "id": 6
+                        },
+                        "ch7Model": {
+                          "type": ".com.amo.skdmc.data.MicInChannelModel",
+                          "id": 7
+                        },
+                        "ch8Model": {
+                          "type": ".com.amo.skdmc.data.MicInChannelModel",
+                          "id": 8
+                        }
+                      }
+                    },
+                    "In2Model": {
+                      "fields": {
+                        "ch9Model": {
+                          "type": ".com.amo.skdmc.data.MicInChannelModel",
+                          "id": 1
+                        },
+                        "ch10Model": {
+                          "type": ".com.amo.skdmc.data.MicInChannelModel",
+                          "id": 2
+                        },
+                        "ch11Model": {
+                          "type": ".com.amo.skdmc.data.MicInChannelModel",
+                          "id": 3
+                        },
+                        "ch12Model": {
+                          "type": ".com.amo.skdmc.data.MicInChannelModel",
+                          "id": 4
+                        },
+                        "st1Model": {
+                          "type": ".com.amo.skdmc.data.MicInChannelModel",
+                          "id": 5
+                        },
+                        "st2Model": {
+                          "type": ".com.amo.skdmc.data.MicInChannelModel",
+                          "id": 6
+                        },
+                        "USBModel": {
+                          "type": ".com.amo.skdmc.data.MicInChannelModel",
+                          "id": 7
+                        },
+                        "SPDIFModel": {
+                          "type": ".com.amo.skdmc.data.MicInChannelModel",
+                          "id": 8
+                        }
+                      }
+                    },
+                    "MicInDynamicPartModel": {
+                      "fields": {
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 1
+                        },
+                        "isGateEnable": {
+                          "type": "bool",
+                          "id": 2
+                        },
+                        "gateThresholdValue": {
+                          "type": "float",
+                          "id": 3
+                        },
+                        "gateAttackValue": {
+                          "type": "float",
+                          "id": 4
+                        },
+                        "gateReleaseValue": {
+                          "type": "float",
+                          "id": 5
+                        },
+                        "gateHoldValue": {
+                          "type": "float",
+                          "id": 6
+                        },
+                        "gateDepthValue": {
+                          "type": "float",
+                          "id": 7
+                        },
+                        "isCompressorEnable": {
+                          "type": "bool",
+                          "id": 8
+                        },
+                        "compressorTresholdValue": {
+                          "type": "float",
+                          "id": 9
+                        },
+                        "compressorAttackValue": {
+                          "type": "float",
+                          "id": 10
+                        },
+                        "compressorReleaseValue": {
+                          "type": "float",
+                          "id": 11
+                        },
+                        "compressorGainValue": {
+                          "type": "float",
+                          "id": 12
+                        },
+                        "compressorRatioValue": {
+                          "type": "float",
+                          "id": 13
+                        },
+                        "dynamicByPass": {
+                          "type": "bool",
+                          "id": 14
+                        },
+                        "chainModuleId": {
+                          "type": "int32",
+                          "id": 15
+                        },
+                        "selectedLibIndex": {
+                          "type": "int32",
+                          "id": 16
+                        }
+                      }
+                    },
+                    "EqPartModel": {
+                      "fields": {
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 1
+                        },
+                        "isByPass": {
+                          "type": "bool",
+                          "id": 2
+                        },
+                        "highFreqValue": {
+                          "type": "float",
+                          "id": 3
+                        },
+                        "highGainValue": {
+                          "type": "float",
+                          "id": 4
+                        },
+                        "highQValue": {
+                          "type": "float",
+                          "id": 5
+                        },
+                        "highMidFreqValue": {
+                          "type": "float",
+                          "id": 6
+                        },
+                        "highMidGainValue": {
+                          "type": "float",
+                          "id": 7
+                        },
+                        "highMidQValue": {
+                          "type": "float",
+                          "id": 8
+                        },
+                        "lowMidFreqValue": {
+                          "type": "float",
+                          "id": 9
+                        },
+                        "lowMidGainValue": {
+                          "type": "float",
+                          "id": 10
+                        },
+                        "lowMidQValue": {
+                          "type": "float",
+                          "id": 11
+                        },
+                        "lowFreqValue": {
+                          "type": "float",
+                          "id": 12
+                        },
+                        "lowGainValue": {
+                          "type": "float",
+                          "id": 13
+                        },
+                        "lowQValue": {
+                          "type": "float",
+                          "id": 14
+                        },
+                        "selectedEq": {
+                          "type": ".com.amo.skdmc.data.EqFragment",
+                          "id": 15
+                        },
+                        "selectedLibIndex": {
+                          "type": "int32",
+                          "id": 16
+                        },
+                        "highType": {
+                          "type": "int32",
+                          "id": 17
+                        },
+                        "lowType": {
+                          "type": "int32",
+                          "id": 18
+                        }
+                      }
+                    },
+                    "EqFragment": {
+                      "values": {
+                        "High": 0,
+                        "HighMid": 1,
+                        "LowMid": 2,
+                        "Low": 3
+                      }
+                    },
+                    "EfxModuleModel": {
+                      "fields": {
+                        "eqModuleId": {
+                          "type": "int32",
+                          "id": 1
+                        },
+                        "eqParamId": {
+                          "type": "int32",
+                          "id": 2
+                        },
+                        "name": {
+                          "type": "string",
+                          "id": 3
+                        }
+                      }
+                    },
+                    "MicInInputPartModel": {
+                      "fields": {
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 1
+                        },
+                        "is48vEnable": {
+                          "type": "bool",
+                          "id": 2
+                        },
+                        "isSumEnable": {
+                          "type": "bool",
+                          "id": 3
+                        },
+                        "isRevEnable": {
+                          "type": "bool",
+                          "id": 4
+                        },
+                        "isDelayEnable": {
+                          "type": "bool",
+                          "id": 5
+                        },
+                        "delayValue": {
+                          "type": "float",
+                          "id": 6
+                        },
+                        "isHPFEnable": {
+                          "type": "bool",
+                          "id": 7
+                        },
+                        "hpfValue": {
+                          "type": "float",
+                          "id": 8
+                        },
+                        "trimValue": {
+                          "type": "float",
+                          "id": 9
+                        },
+                        "moduleModel": {
+                          "type": ".com.amo.skdmc.data.EfxModuleModel",
+                          "id": 10,
+                          "rule": "repeated"
+                        },
+                        "modul1Value": {
+                          "type": "int32",
+                          "id": 11
+                        },
+                        "modul2Value": {
+                          "type": "int32",
+                          "id": 12
+                        },
+                        "delay1Value": {
+                          "type": "int32",
+                          "id": 13
+                        },
+                        "delay2Value": {
+                          "type": "int32",
+                          "id": 14
+                        },
+                        "reverb1Value": {
+                          "type": "int32",
+                          "id": 15
+                        },
+                        "reverb2Value": {
+                          "type": "int32",
+                          "id": 16
+                        },
+                        "geq1Value": {
+                          "type": "int32",
+                          "id": 17
+                        },
+                        "geq2Value": {
+                          "type": "int32",
+                          "id": 18
+                        },
+                        "isTrimEnable": {
+                          "type": "bool",
+                          "id": 19
+                        },
+                        "gainValue": {
+                          "type": "float",
+                          "id": 20
+                        }
+                      }
+                    },
+                    "MicInOutputPartModel": {
+                      "fields": {
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 1
+                        },
+                        "panValue": {
+                          "type": "float",
+                          "id": 2
+                        },
+                        "isSoloEnable": {
+                          "type": "bool",
+                          "id": 3
+                        },
+                        "isMuteEnable": {
+                          "type": "bool",
+                          "id": 4
+                        },
+                        "outFaderValue": {
+                          "type": "float",
+                          "id": 5
+                        },
+                        "isLREnable": {
+                          "type": "bool",
+                          "id": 6
+                        }
+                      }
+                    },
+                    "SetupModel": {
+                      "fields": {
+                        "infoModel": {
+                          "type": ".com.amo.skdmc.data.SetupInfoModel",
+                          "id": 1
+                        },
+                        "patchModel": {
+                          "type": ".com.amo.skdmc.data.SetupPatchModel",
+                          "id": 2
+                        },
+                        "fxModel": {
+                          "type": ".com.amo.skdmc.data.SetupFxModel",
+                          "id": 3
+                        },
+                        "recorderModel": {
+                          "type": ".com.amo.skdmc.data.SetupRecorderModel",
+                          "id": 4
+                        },
+                        "monitorModel": {
+                          "type": ".com.amo.skdmc.data.SetupMonitorModel",
+                          "id": 5
+                        },
+                        "meterModel": {
+                          "type": ".com.amo.skdmc.data.SetupMeterModel",
+                          "id": 6
+                        }
+                      }
+                    },
+                    "SetupFxModel": {
+                      "fields": {
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 1
+                        },
+                        "fxPatchL": {
+                          "type": "int32",
+                          "id": 2
+                        },
+                        "fxPatchR": {
+                          "type": "int32",
+                          "id": 3
+                        },
+                        "modul1": {
+                          "type": ".com.amo.skdmc.data.SetupFxModulModel",
+                          "id": 4
+                        },
+                        "modul2": {
+                          "type": ".com.amo.skdmc.data.SetupFxModulModel",
+                          "id": 5
+                        },
+                        "delay1": {
+                          "type": ".com.amo.skdmc.data.SetupFxDelayModel",
+                          "id": 6
+                        },
+                        "delay2": {
+                          "type": ".com.amo.skdmc.data.SetupFxDelayModel",
+                          "id": 7
+                        },
+                        "geq1": {
+                          "type": ".com.amo.skdmc.data.SetupFxGeqModel",
+                          "id": 8
+                        },
+                        "geq2": {
+                          "type": ".com.amo.skdmc.data.SetupFxGeqModel",
+                          "id": 9
+                        },
+                        "reverb1": {
+                          "type": ".com.amo.skdmc.data.SetupFxReverbModel",
+                          "id": 10
+                        },
+                        "reverb2": {
+                          "type": ".com.amo.skdmc.data.SetupFxReverbModel",
+                          "id": 11
+                        }
+                      }
+                    },
+                    "SetupFxModulModel": {
+                      "fields": {
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 1
+                        },
+                        "gainLsValue": {
+                          "type": "float",
+                          "id": 2
+                        },
+                        "freqLsValue": {
+                          "type": "float",
+                          "id": 3
+                        },
+                        "gainHsValue": {
+                          "type": "float",
+                          "id": 4
+                        },
+                        "freqHsValue": {
+                          "type": "float",
+                          "id": 5
+                        },
+                        "dryWetValue": {
+                          "type": "float",
+                          "id": 6
+                        },
+                        "rateValue": {
+                          "type": "float",
+                          "id": 7
+                        },
+                        "intensityValue": {
+                          "type": "float",
+                          "id": 8
+                        },
+                        "delayValue": {
+                          "type": "float",
+                          "id": 9
+                        },
+                        "typeValue": {
+                          "type": "float",
+                          "id": 10
+                        },
+                        "selectedLibIndex": {
+                          "type": "int32",
+                          "id": 11
+                        }
+                      }
+                    },
+                    "SetupFxDelayModel": {
+                      "fields": {
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 1
+                        },
+                        "gainLsValue": {
+                          "type": "float",
+                          "id": 2
+                        },
+                        "freqLsValue": {
+                          "type": "float",
+                          "id": 3
+                        },
+                        "gainHsValue": {
+                          "type": "float",
+                          "id": 4
+                        },
+                        "freqHsValue": {
+                          "type": "float",
+                          "id": 5
+                        },
+                        "dryWetValue": {
+                          "type": "float",
+                          "id": 6
+                        },
+                        "factorValue": {
+                          "type": "float",
+                          "id": 7
+                        },
+                        "timeValue": {
+                          "type": "float",
+                          "id": 8
+                        },
+                        "tempoValue": {
+                          "type": "float",
+                          "id": 9
+                        },
+                        "feedbackValue": {
+                          "type": "float",
+                          "id": 10
+                        },
+                        "TypeValue": {
+                          "type": "int32",
+                          "id": 11
+                        },
+                        "selectedLibIndex": {
+                          "type": "int32",
+                          "id": 12
+                        }
+                      }
+                    },
+                    "SetupFxGeqModel": {
+                      "fields": {
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 1
+                        },
+                        "isByPass": {
+                          "type": "bool",
+                          "id": 2
+                        },
+                        "isNum18": {
+                          "type": "bool",
+                          "id": 3
+                        },
+                        "isNum915": {
+                          "type": "bool",
+                          "id": 4
+                        },
+                        "lrChannel": {
+                          "type": "int32",
+                          "id": 5
+                        },
+                        "fader1": {
+                          "type": "float",
+                          "id": 6
+                        },
+                        "fader2": {
+                          "type": "float",
+                          "id": 7
+                        },
+                        "fader3": {
+                          "type": "float",
+                          "id": 8
+                        },
+                        "fader4": {
+                          "type": "float",
+                          "id": 9
+                        },
+                        "fader5": {
+                          "type": "float",
+                          "id": 10
+                        },
+                        "fader6": {
+                          "type": "float",
+                          "id": 11
+                        },
+                        "fader7": {
+                          "type": "float",
+                          "id": 12
+                        },
+                        "fader8": {
+                          "type": "float",
+                          "id": 13
+                        },
+                        "fader9": {
+                          "type": "float",
+                          "id": 14
+                        },
+                        "fader10": {
+                          "type": "float",
+                          "id": 15
+                        },
+                        "fader11": {
+                          "type": "float",
+                          "id": 16
+                        },
+                        "fader12": {
+                          "type": "float",
+                          "id": 17
+                        },
+                        "fader13": {
+                          "type": "float",
+                          "id": 18
+                        },
+                        "fader14": {
+                          "type": "float",
+                          "id": 19
+                        },
+                        "fader15": {
+                          "type": "float",
+                          "id": 20
+                        },
+                        "selectedLibIndex": {
+                          "type": "int32",
+                          "id": 21
+                        },
+                        "fader16": {
+                          "type": "float",
+                          "id": 22
+                        },
+                        "fader17": {
+                          "type": "float",
+                          "id": 23
+                        },
+                        "fader18": {
+                          "type": "float",
+                          "id": 24
+                        },
+                        "fader19": {
+                          "type": "float",
+                          "id": 25
+                        },
+                        "fader20": {
+                          "type": "float",
+                          "id": 26
+                        },
+                        "fader21": {
+                          "type": "float",
+                          "id": 27
+                        },
+                        "fader22": {
+                          "type": "float",
+                          "id": 28
+                        },
+                        "fader23": {
+                          "type": "float",
+                          "id": 29
+                        },
+                        "fader24": {
+                          "type": "float",
+                          "id": 30
+                        },
+                        "fader25": {
+                          "type": "float",
+                          "id": 31
+                        },
+                        "fader26": {
+                          "type": "float",
+                          "id": 32
+                        },
+                        "fader27": {
+                          "type": "float",
+                          "id": 33
+                        },
+                        "fader28": {
+                          "type": "float",
+                          "id": 34
+                        },
+                        "fader29": {
+                          "type": "float",
+                          "id": 35
+                        },
+                        "fader30": {
+                          "type": "float",
+                          "id": 36
+                        },
+                        "fader31": {
+                          "type": "float",
+                          "id": 37
+                        },
+                        "isNum1724": {
+                          "type": "bool",
+                          "id": 38
+                        },
+                        "isNum2531": {
+                          "type": "bool",
+                          "id": 39
+                        }
+                      }
+                    },
+                    "SetupFxReverbModel": {
+                      "fields": {
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 1
+                        },
+                        "gainLsValue": {
+                          "type": "float",
+                          "id": 2
+                        },
+                        "freqLsValue": {
+                          "type": "float",
+                          "id": 3
+                        },
+                        "gainHsValue": {
+                          "type": "float",
+                          "id": 4
+                        },
+                        "freqHsValue": {
+                          "type": "float",
+                          "id": 5
+                        },
+                        "dryWetValue": {
+                          "type": "float",
+                          "id": 6
+                        },
+                        "timeValue": {
+                          "type": "float",
+                          "id": 7
+                        },
+                        "delayValue": {
+                          "type": "float",
+                          "id": 8
+                        },
+                        "typeValue": {
+                          "type": "float",
+                          "id": 9
+                        },
+                        "selectedLibIndex": {
+                          "type": "int32",
+                          "id": 10
+                        }
+                      }
+                    },
+                    "SetupInfoModel": {
+                      "fields": {
+                        "moduleId": {
+                          "type": "int32",
+                          "id": 1
+                        },
+                        "brightnessIndex": {
+                          "type": "int32",
+                          "id": 2
+                        },
+                        "msUnit": {
+                          "type": "bool",
+                          "id": 3
+                        },
+                        "ftUnit": {
+                          "type": "bool",
+                          "id": 4
+                        },
+                        "mUnit": {
+                          "type": "bool",
+                          "id": 5
+                        },
+                        "isRate48KHz": {
+                          "type": "bool",
+                          "id": 6
+                        },
+                        "isRate44KHz": {
+                          "type": "bool",
+                          "id": 7
+                        },
+                        "isFactReset": {
+                          "type": "bool",
+                          "id": 8
+                        },
+                        "isNetUpdate": {
+                          "type": "bool",
+                          "id": 9
+                        },
+                        "isFullRestore": {
+                          "type": "bool",
+                          "id": 10
+                        },
+                        "isWifiEnable": {
+                          "type": "bool",
+                          "id": 11
+                        },
+                        "isWifiHost": {
+                          "type": "bool",
+                          "id": 12
+                        },
+                        "isWifiClient": {
+                          "type": "bool",
+                          "id": 13
+                        },
+                        "isRemoteEnable": {
+                          "type": "bool",
+                          "id": 14
+                        },
+                        "apkVersion": {
+                          "type": "string",
+                          "id": 15
+                        },
+                        "dspVersion": {
+                          "type": "string",
+                          "id": 16
+                        },
+                        "serialID": {
+                          "type": "string",
+                          "id": 17
+                        },
+                        "isBus8LpfEnable": {
+                          "type": "bool",
+                          "id": 18
+                        },
+                        "bus8LpfValue": {
+                          "type": "float",
+                          "id": 19
+                        },
+                        "isMasterLrHPFEnable": {
+                          "type": "bool",
+                          "id": 20
+                        },
+                        "masterLrHpfValue": {
+                          "type": "float",
+                          "id": 21
+                        }
+                      }
+                    },
+                    "SetupMeterModel": {
+                      "fields": {
+                        "channelMeterStatue": {
+                          "type": ".com.amo.skdmc.data.EnmChannelMeterStatue",
+                          "id": 1
+                        },
+                        "busMeterStatue": {
+                          "type": ".com.amo.skdmc.data.EnmBusMeterStatue",
+                          "id": 2
+                        },
+                        "out1": {
+                          "type": "int32",
+                          "id": 3
+                        },
+                        "out2": {
+                          "type": "int32",
+                          "id": 4
+                        },
+                        "out3": {
+                          "type": "int32",
+                          "id": 5
+                        },
+                        "out4": {
+                          "type": "int32",
+                          "id": 6
+                        },
+                        "out5": {
+                          "type": "int32",
+                          "id": 7
+                        },
+                        "out6": {
+                          "type": "int32",
+                          "id": 8
+                        },
+                        "out7": {
+                          "type": "int32",
+                          "id": 9
+                        },
+                        "out8": {
+                          "type": "int32",
+                          "id": 14
+                        },
+                        "spdif_u": {
+                          "type": "int32",
+                          "id": 15
+                        },
+                        "spdif_d": {
+                          "type": "int32",
+                          "id": 16
+                        },
+                        "usb_u": {
+                          "type": "int32",
+                          "id": 17
+                        },
+                        "usb_d": {
+                          "type": "int32",
+                          "id": 18
+                        }
+                      }
+                    },
+                    "EnmChannelMeterStatue": {
+                      "values": {
+                        "Channel_In": 0,
+                        "Channel_PreFader": 1,
+                        "Channel_PostFader": 2
+                      }
+                    },
+                    "EnmBusMeterStatue": {
+                      "values": {
+                        "Bus_PreFader": 0,
+                        "Bus_PostFader": 1
+                      }
+                    },
+                    "SetupMonitorModel": {
+                      "fields": {
+                        "isAflEnable": {
+                          "type": "bool",
+                          "id": 1
+                        },
+                        "isMuteEnable": {
+                          "type": "bool",
+                          "id": 2
+                        },
+                        "isOsciEnable": {
+                          "type": "bool",
+                          "id": 3
+                        },
+                        "mpLevelValue": {
+                          "type": "float",
+                          "id": 4
+                        },
+                        "osciLevelValue": {
+                          "type": "float",
+                          "id": 5
+                        },
+                        "osciFreqValue": {
+                          "type": "float",
+                          "id": 6
+                        },
+                        "soloAflValue": {
+                          "type": "float",
+                          "id": 7
+                        },
+                        "typeValue": {
+                          "type": "int32",
+                          "id": 8
+                        },
+                        "isBus1": {
+                          "type": "bool",
+                          "id": 9
+                        },
+                        "isBus2": {
+                          "type": "bool",
+                          "id": 10
+                        },
+                        "isBus3": {
+                          "type": "bool",
+                          "id": 11
+                        },
+                        "isBus4": {
+                          "type": "bool",
+                          "id": 12
+                        },
+                        "isBus5": {
+                          "type": "bool",
+                          "id": 13
+                        },
+                        "isBus6": {
+                          "type": "bool",
+                          "id": 14
+                        },
+                        "isBus7": {
+                          "type": "bool",
+                          "id": 15
+                        },
+                        "isBus8": {
+                          "type": "bool",
+                          "id": 16
+                        },
+                        "isMasterLR": {
+                          "type": "bool",
+                          "id": 17
+                        }
+                      }
+                    },
+                    "SetupPatchItemModel": {
+                      "fields": {
+                        "out1": {
+                          "type": "int32",
+                          "id": 1
+                        },
+                        "out2": {
+                          "type": "int32",
+                          "id": 2
+                        },
+                        "out3": {
+                          "type": "int32",
+                          "id": 3
+                        },
+                        "out4": {
+                          "type": "int32",
+                          "id": 4
+                        },
+                        "out5": {
+                          "type": "int32",
+                          "id": 5
+                        },
+                        "out6": {
+                          "type": "int32",
+                          "id": 6
+                        },
+                        "out7": {
+                          "type": "int32",
+                          "id": 7
+                        },
+                        "out8": {
+                          "type": "int32",
+                          "id": 8
+                        },
+                        "spdif_d": {
+                          "type": "int32",
+                          "id": 9
+                        },
+                        "spdif_u": {
+                          "type": "int32",
+                          "id": 10
+                        },
+                        "usb_d": {
+                          "type": "int32",
+                          "id": 11
+                        },
+                        "usb_u": {
+                          "type": "int32",
+                          "id": 12
+                        }
+                      }
+                    },
+                    "SetupPatchModel": {
+                      "fields": {
+                        "isDefault": {
+                          "type": "bool",
+                          "id": 1
+                        },
+                        "isCustom1": {
+                          "type": "bool",
+                          "id": 2
+                        },
+                        "isCustom2": {
+                          "type": "bool",
+                          "id": 3
+                        },
+                        "isCustom3": {
+                          "type": "bool",
+                          "id": 4
+                        },
+                        "out1": {
+                          "type": "int32",
+                          "id": 5
+                        },
+                        "out2": {
+                          "type": "int32",
+                          "id": 6
+                        },
+                        "out3": {
+                          "type": "int32",
+                          "id": 7
+                        },
+                        "out4": {
+                          "type": "int32",
+                          "id": 8
+                        },
+                        "out5": {
+                          "type": "int32",
+                          "id": 9
+                        },
+                        "out6": {
+                          "type": "int32",
+                          "id": 10
+                        },
+                        "out7": {
+                          "type": "int32",
+                          "id": 11
+                        },
+                        "out8": {
+                          "type": "int32",
+                          "id": 12
+                        },
+                        "spdif_d": {
+                          "type": "int32",
+                          "id": 13
+                        },
+                        "spdif_u": {
+                          "type": "int32",
+                          "id": 14
+                        },
+                        "usb_d": {
+                          "type": "int32",
+                          "id": 15
+                        },
+                        "usb_u": {
+                          "type": "int32",
+                          "id": 16
+                        },
+                        "custom1Model": {
+                          "type": ".com.amo.skdmc.data.SetupPatchItemModel",
+                          "id": 17
+                        },
+                        "custom2Model": {
+                          "type": ".com.amo.skdmc.data.SetupPatchItemModel",
+                          "id": 18
+                        },
+                        "custom3Model": {
+                          "type": ".com.amo.skdmc.data.SetupPatchItemModel",
+                          "id": 19
+                        },
+                        "defaultModel": {
+                          "type": ".com.amo.skdmc.data.SetupPatchItemModel",
+                          "id": 20
+                        }
+                      }
+                    },
+                    "SetupRecorderModel": {
+                      "fields": {
+                        "isPlaybackEnable": {
+                          "type": "bool",
+                          "id": 1
+                        },
+                        "isSource": {
+                          "type": "int32",
+                          "id": 2
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "google": {
+      "nested": {
+        "protobuf": {
+          "nested": {
+            "Any": {
+              "fields": {
+                "type_url": {
+                  "type": "string",
+                  "id": 1
+                },
+                "value": {
+                  "type": "bytes",
+                  "id": 2
+                }
+              }
+            },
+            "Api": {
+              "fields": {
+                "name": {
+                  "type": "string",
+                  "id": 1
+                },
+                "methods": {
+                  "type": ".google.protobuf.Method",
+                  "id": 2,
+                  "rule": "repeated"
+                },
+                "options": {
+                  "type": ".google.protobuf.Option",
+                  "id": 3,
+                  "rule": "repeated"
+                },
+                "version": {
+                  "type": "string",
+                  "id": 4
+                },
+                "source_context": {
+                  "type": ".google.protobuf.SourceContext",
+                  "id": 5
+                },
+                "mixins": {
+                  "type": ".google.protobuf.Mixin",
+                  "id": 6,
+                  "rule": "repeated"
+                },
+                "syntax": {
+                  "type": ".google.protobuf.Syntax",
+                  "id": 7
+                }
+              }
+            },
+            "Method": {
+              "fields": {
+                "name": {
+                  "type": "string",
+                  "id": 1
+                },
+                "request_type_url": {
+                  "type": "string",
+                  "id": 2
+                },
+                "request_streaming": {
+                  "type": "bool",
+                  "id": 3
+                },
+                "response_type_url": {
+                  "type": "string",
+                  "id": 4
+                },
+                "response_streaming": {
+                  "type": "bool",
+                  "id": 5
+                },
+                "options": {
+                  "type": ".google.protobuf.Option",
+                  "id": 6,
+                  "rule": "repeated"
+                },
+                "syntax": {
+                  "type": ".google.protobuf.Syntax",
+                  "id": 7
+                }
+              }
+            },
+            "Mixin": {
+              "fields": {
+                "name": {
+                  "type": "string",
+                  "id": 1
+                },
+                "root": {
+                  "type": "string",
+                  "id": 2
+                }
+              }
+            },
+            "compiler": {
+              "nested": {
+                "CodeGeneratorRequest": {
+                  "fields": {
+                    "file_to_generate": {
+                      "type": "string",
+                      "id": 1,
+                      "rule": "repeated"
+                    },
+                    "parameter": {
+                      "type": "string",
+                      "id": 2
+                    },
+                    "proto_file": {
+                      "type": ".google.protobuf.FileDescriptorProto",
+                      "id": 15,
+                      "rule": "repeated"
+                    }
+                  }
+                },
+                "CodeGeneratorResponse": {
+                  "fields": {
+                    "error": {
+                      "type": "string",
+                      "id": 1
+                    },
+                    "file": {
+                      "type": ".google.protobuf.compiler.CodeGeneratorResponse.File",
+                      "id": 15,
+                      "rule": "repeated"
+                    }
+                  },
+                  "nested": {
+                    "File": {
+                      "fields": {
+                        "name": {
+                          "type": "string",
+                          "id": 1
+                        },
+                        "insertion_point": {
+                          "type": "string",
+                          "id": 2
+                        },
+                        "content": {
+                          "type": "string",
+                          "id": 15
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "FileDescriptorSet": {
+              "fields": {
+                "file": {
+                  "type": ".google.protobuf.FileDescriptorProto",
+                  "id": 1,
+                  "rule": "repeated"
+                }
+              }
+            },
+            "FileDescriptorProto": {
+              "fields": {
+                "name": {
+                  "type": "string",
+                  "id": 1
+                },
+                "package": {
+                  "type": "string",
+                  "id": 2
+                },
+                "dependency": {
+                  "type": "string",
+                  "id": 3,
+                  "rule": "repeated"
+                },
+                "public_dependency": {
+                  "type": "int32",
+                  "id": 10,
+                  "rule": "repeated"
+                },
+                "weak_dependency": {
+                  "type": "int32",
+                  "id": 11,
+                  "rule": "repeated"
+                },
+                "message_type": {
+                  "type": ".google.protobuf.DescriptorProto",
+                  "id": 4,
+                  "rule": "repeated"
+                },
+                "enum_type": {
+                  "type": ".google.protobuf.EnumDescriptorProto",
+                  "id": 5,
+                  "rule": "repeated"
+                },
+                "service": {
+                  "type": ".google.protobuf.ServiceDescriptorProto",
+                  "id": 6,
+                  "rule": "repeated"
+                },
+                "extension": {
+                  "type": ".google.protobuf.FieldDescriptorProto",
+                  "id": 7,
+                  "rule": "repeated"
+                },
+                "options": {
+                  "type": ".google.protobuf.FileOptions",
+                  "id": 8
+                },
+                "source_code_info": {
+                  "type": ".google.protobuf.SourceCodeInfo",
+                  "id": 9
+                },
+                "syntax": {
+                  "type": "string",
+                  "id": 12
+                }
+              }
+            },
+            "DescriptorProto": {
+              "fields": {
+                "name": {
+                  "type": "string",
+                  "id": 1
+                },
+                "field": {
+                  "type": ".google.protobuf.FieldDescriptorProto",
+                  "id": 2,
+                  "rule": "repeated"
+                },
+                "extension": {
+                  "type": ".google.protobuf.FieldDescriptorProto",
+                  "id": 6,
+                  "rule": "repeated"
+                },
+                "nested_type": {
+                  "type": ".google.protobuf.DescriptorProto",
+                  "id": 3,
+                  "rule": "repeated"
+                },
+                "enum_type": {
+                  "type": ".google.protobuf.EnumDescriptorProto",
+                  "id": 4,
+                  "rule": "repeated"
+                },
+                "extension_range": {
+                  "type": ".google.protobuf.DescriptorProto.ExtensionRange",
+                  "id": 5,
+                  "rule": "repeated"
+                },
+                "oneof_decl": {
+                  "type": ".google.protobuf.OneofDescriptorProto",
+                  "id": 8,
+                  "rule": "repeated"
+                },
+                "options": {
+                  "type": ".google.protobuf.MessageOptions",
+                  "id": 7
+                },
+                "reserved_range": {
+                  "type": ".google.protobuf.DescriptorProto.ReservedRange",
+                  "id": 9,
+                  "rule": "repeated"
+                },
+                "reserved_name": {
+                  "type": "string",
+                  "id": 10,
+                  "rule": "repeated"
+                }
+              },
+              "nested": {
+                "ExtensionRange": {
+                  "fields": {
+                    "start": {
+                      "type": "int32",
+                      "id": 1
+                    },
+                    "end": {
+                      "type": "int32",
+                      "id": 2
+                    }
+                  }
+                },
+                "ReservedRange": {
+                  "fields": {
+                    "start": {
+                      "type": "int32",
+                      "id": 1
+                    },
+                    "end": {
+                      "type": "int32",
+                      "id": 2
+                    }
+                  }
+                }
+              }
+            },
+            "FieldDescriptorProto": {
+              "fields": {
+                "name": {
+                  "type": "string",
+                  "id": 1
+                },
+                "number": {
+                  "type": "int32",
+                  "id": 3
+                },
+                "label": {
+                  "type": ".google.protobuf.FieldDescriptorProto.Label",
+                  "id": 4
+                },
+                "type": {
+                  "type": ".google.protobuf.FieldDescriptorProto.Type",
+                  "id": 5
+                },
+                "type_name": {
+                  "type": "string",
+                  "id": 6
+                },
+                "extendee": {
+                  "type": "string",
+                  "id": 2
+                },
+                "default_value": {
+                  "type": "string",
+                  "id": 7
+                },
+                "oneof_index": {
+                  "type": "int32",
+                  "id": 9
+                },
+                "json_name": {
+                  "type": "string",
+                  "id": 10
+                },
+                "options": {
+                  "type": ".google.protobuf.FieldOptions",
+                  "id": 8
+                }
+              },
+              "nested": {
+                "Type": {
+                  "values": {
+                    "TYPE_DOUBLE": 1,
+                    "TYPE_FLOAT": 2,
+                    "TYPE_INT64": 3,
+                    "TYPE_UINT64": 4,
+                    "TYPE_INT32": 5,
+                    "TYPE_FIXED64": 6,
+                    "TYPE_FIXED32": 7,
+                    "TYPE_BOOL": 8,
+                    "TYPE_STRING": 9,
+                    "TYPE_GROUP": 10,
+                    "TYPE_MESSAGE": 11,
+                    "TYPE_BYTES": 12,
+                    "TYPE_UINT32": 13,
+                    "TYPE_ENUM": 14,
+                    "TYPE_SFIXED32": 15,
+                    "TYPE_SFIXED64": 16,
+                    "TYPE_SINT32": 17,
+                    "TYPE_SINT64": 18
+                  }
+                },
+                "Label": {
+                  "values": {
+                    "LABEL_OPTIONAL": 1,
+                    "LABEL_REQUIRED": 2,
+                    "LABEL_REPEATED": 3
+                  }
+                }
+              }
+            },
+            "OneofDescriptorProto": {
+              "fields": {
+                "name": {
+                  "type": "string",
+                  "id": 1
+                },
+                "options": {
+                  "type": ".google.protobuf.OneofOptions",
+                  "id": 2
+                }
+              }
+            },
+            "EnumDescriptorProto": {
+              "fields": {
+                "name": {
+                  "type": "string",
+                  "id": 1
+                },
+                "value": {
+                  "type": ".google.protobuf.EnumValueDescriptorProto",
+                  "id": 2,
+                  "rule": "repeated"
+                },
+                "options": {
+                  "type": ".google.protobuf.EnumOptions",
+                  "id": 3
+                }
+              }
+            },
+            "EnumValueDescriptorProto": {
+              "fields": {
+                "name": {
+                  "type": "string",
+                  "id": 1
+                },
+                "number": {
+                  "type": "int32",
+                  "id": 2
+                },
+                "options": {
+                  "type": ".google.protobuf.EnumValueOptions",
+                  "id": 3
+                }
+              }
+            },
+            "ServiceDescriptorProto": {
+              "fields": {
+                "name": {
+                  "type": "string",
+                  "id": 1
+                },
+                "method": {
+                  "type": ".google.protobuf.MethodDescriptorProto",
+                  "id": 2,
+                  "rule": "repeated"
+                },
+                "options": {
+                  "type": ".google.protobuf.ServiceOptions",
+                  "id": 3
+                }
+              }
+            },
+            "MethodDescriptorProto": {
+              "fields": {
+                "name": {
+                  "type": "string",
+                  "id": 1
+                },
+                "input_type": {
+                  "type": "string",
+                  "id": 2
+                },
+                "output_type": {
+                  "type": "string",
+                  "id": 3
+                },
+                "options": {
+                  "type": ".google.protobuf.MethodOptions",
+                  "id": 4
+                },
+                "client_streaming": {
+                  "type": "bool",
+                  "id": 5
+                },
+                "server_streaming": {
+                  "type": "bool",
+                  "id": 6
+                }
+              }
+            },
+            "FileOptions": {
+              "fields": {
+                "java_package": {
+                  "type": "string",
+                  "id": 1
+                },
+                "java_outer_classname": {
+                  "type": "string",
+                  "id": 8
+                },
+                "java_multiple_files": {
+                  "type": "bool",
+                  "id": 10
+                },
+                "java_generate_equals_and_hash": {
+                  "type": "bool",
+                  "id": 20
+                },
+                "java_string_check_utf8": {
+                  "type": "bool",
+                  "id": 27
+                },
+                "optimize_for": {
+                  "type": ".google.protobuf.FileOptions.OptimizeMode",
+                  "id": 9
+                },
+                "go_package": {
+                  "type": "string",
+                  "id": 11
+                },
+                "cc_generic_services": {
+                  "type": "bool",
+                  "id": 16
+                },
+                "java_generic_services": {
+                  "type": "bool",
+                  "id": 17
+                },
+                "py_generic_services": {
+                  "type": "bool",
+                  "id": 18
+                },
+                "deprecated": {
+                  "type": "bool",
+                  "id": 23
+                },
+                "cc_enable_arenas": {
+                  "type": "bool",
+                  "id": 31
+                },
+                "objc_class_prefix": {
+                  "type": "string",
+                  "id": 36
+                },
+                "csharp_namespace": {
+                  "type": "string",
+                  "id": 37
+                },
+                "uninterpreted_option": {
+                  "type": ".google.protobuf.UninterpretedOption",
+                  "id": 999,
+                  "rule": "repeated"
+                }
+              },
+              "nested": {
+                "OptimizeMode": {
+                  "values": {
+                    "SPEED": 1,
+                    "CODE_SIZE": 2,
+                    "LITE_RUNTIME": 3
+                  }
+                }
+              }
+            },
+            "MessageOptions": {
+              "fields": {
+                "message_set_wire_format": {
+                  "type": "bool",
+                  "id": 1
+                },
+                "no_standard_descriptor_accessor": {
+                  "type": "bool",
+                  "id": 2
+                },
+                "deprecated": {
+                  "type": "bool",
+                  "id": 3
+                },
+                "map_entry": {
+                  "type": "bool",
+                  "id": 7
+                },
+                "uninterpreted_option": {
+                  "type": ".google.protobuf.UninterpretedOption",
+                  "id": 999,
+                  "rule": "repeated"
+                }
+              }
+            },
+            "FieldOptions": {
+              "fields": {
+                "ctype": {
+                  "type": ".google.protobuf.FieldOptions.CType",
+                  "id": 1
+                },
+                "packed": {
+                  "type": "bool",
+                  "id": 2
+                },
+                "jstype": {
+                  "type": ".google.protobuf.FieldOptions.JSType",
+                  "id": 6
+                },
+                "lazy": {
+                  "type": "bool",
+                  "id": 5
+                },
+                "deprecated": {
+                  "type": "bool",
+                  "id": 3
+                },
+                "weak": {
+                  "type": "bool",
+                  "id": 10
+                },
+                "uninterpreted_option": {
+                  "type": ".google.protobuf.UninterpretedOption",
+                  "id": 999,
+                  "rule": "repeated"
+                }
+              },
+              "nested": {
+                "CType": {
+                  "values": {
+                    "STRING": 0,
+                    "CORD": 1,
+                    "STRING_PIECE": 2
+                  }
+                },
+                "JSType": {
+                  "values": {
+                    "JS_NORMAL": 0,
+                    "JS_STRING": 1,
+                    "JS_NUMBER": 2
+                  }
+                }
+              }
+            },
+            "OneofOptions": {
+              "fields": {
+                "uninterpreted_option": {
+                  "type": ".google.protobuf.UninterpretedOption",
+                  "id": 999,
+                  "rule": "repeated"
+                }
+              }
+            },
+            "EnumOptions": {
+              "fields": {
+                "allow_alias": {
+                  "type": "bool",
+                  "id": 2
+                },
+                "deprecated": {
+                  "type": "bool",
+                  "id": 3
+                },
+                "uninterpreted_option": {
+                  "type": ".google.protobuf.UninterpretedOption",
+                  "id": 999,
+                  "rule": "repeated"
+                }
+              }
+            },
+            "EnumValueOptions": {
+              "fields": {
+                "deprecated": {
+                  "type": "bool",
+                  "id": 1
+                },
+                "uninterpreted_option": {
+                  "type": ".google.protobuf.UninterpretedOption",
+                  "id": 999,
+                  "rule": "repeated"
+                }
+              }
+            },
+            "ServiceOptions": {
+              "fields": {
+                "deprecated": {
+                  "type": "bool",
+                  "id": 33
+                },
+                "uninterpreted_option": {
+                  "type": ".google.protobuf.UninterpretedOption",
+                  "id": 999,
+                  "rule": "repeated"
+                }
+              }
+            },
+            "MethodOptions": {
+              "fields": {
+                "deprecated": {
+                  "type": "bool",
+                  "id": 33
+                },
+                "uninterpreted_option": {
+                  "type": ".google.protobuf.UninterpretedOption",
+                  "id": 999,
+                  "rule": "repeated"
+                }
+              }
+            },
+            "UninterpretedOption": {
+              "fields": {
+                "name": {
+                  "type": ".google.protobuf.UninterpretedOption.NamePart",
+                  "id": 2,
+                  "rule": "repeated"
+                },
+                "identifier_value": {
+                  "type": "string",
+                  "id": 3
+                },
+                "positive_int_value": {
+                  "type": "uint64",
+                  "id": 4
+                },
+                "negative_int_value": {
+                  "type": "int64",
+                  "id": 5
+                },
+                "double_value": {
+                  "type": "double",
+                  "id": 6
+                },
+                "string_value": {
+                  "type": "bytes",
+                  "id": 7
+                },
+                "aggregate_value": {
+                  "type": "string",
+                  "id": 8
+                }
+              },
+              "nested": {
+                "NamePart": {
+                  "fields": {
+                    "name_part": {
+                      "type": "string",
+                      "id": 1
+                    },
+                    "is_extension": {
+                      "type": "bool",
+                      "id": 2
+                    }
+                  }
+                }
+              }
+            },
+            "SourceCodeInfo": {
+              "fields": {
+                "location": {
+                  "type": ".google.protobuf.SourceCodeInfo.Location",
+                  "id": 1,
+                  "rule": "repeated"
+                }
+              },
+              "nested": {
+                "Location": {
+                  "fields": {
+                    "path": {
+                      "type": "int32",
+                      "id": 1,
+                      "rule": "repeated"
+                    },
+                    "span": {
+                      "type": "int32",
+                      "id": 2,
+                      "rule": "repeated"
+                    },
+                    "leading_comments": {
+                      "type": "string",
+                      "id": 3
+                    },
+                    "trailing_comments": {
+                      "type": "string",
+                      "id": 4
+                    },
+                    "leading_detached_comments": {
+                      "type": "string",
+                      "id": 6,
+                      "rule": "repeated"
+                    }
+                  }
+                }
+              }
+            },
+            "GeneratedCodeInfo": {
+              "fields": {
+                "annotation": {
+                  "type": ".google.protobuf.GeneratedCodeInfo.Annotation",
+                  "id": 1,
+                  "rule": "repeated"
+                }
+              },
+              "nested": {
+                "Annotation": {
+                  "fields": {
+                    "path": {
+                      "type": "int32",
+                      "id": 1,
+                      "rule": "repeated"
+                    },
+                    "source_file": {
+                      "type": "string",
+                      "id": 2
+                    },
+                    "begin": {
+                      "type": "int32",
+                      "id": 3
+                    },
+                    "end": {
+                      "type": "int32",
+                      "id": 4
+                    }
+                  }
+                }
+              }
+            },
+            "Duration": {
+              "fields": {
+                "seconds": {
+                  "type": "int64",
+                  "id": 1
+                },
+                "nanos": {
+                  "type": "int32",
+                  "id": 2
+                }
+              }
+            },
+            "Empty": {
+              "fields": {}
+            },
+            "FieldMask": {
+              "fields": {
+                "paths": {
+                  "type": "string",
+                  "id": 1,
+                  "rule": "repeated"
+                }
+              }
+            },
+            "SourceContext": {
+              "fields": {
+                "file_name": {
+                  "type": "string",
+                  "id": 1
+                }
+              }
+            },
+            "Struct": {
+              "fields": {
+                "fields": {
+                  "type": ".google.protobuf.Struct.FieldsEntry",
+                  "id": 1,
+                  "rule": "repeated"
+                }
+              },
+              "nested": {
+                "FieldsEntry": {
+                  "fields": {
+                    "key": {
+                      "type": "string",
+                      "id": 1
+                    },
+                    "value": {
+                      "type": ".google.protobuf.Value",
+                      "id": 2
+                    }
+                  }
+                }
+              }
+            },
+            "Value": {
+              "fields": {
+                "null_value": {
+                  "type": ".google.protobuf.NullValue",
+                  "id": 1
+                },
+                "number_value": {
+                  "type": "double",
+                  "id": 2
+                },
+                "string_value": {
+                  "type": "string",
+                  "id": 3
+                },
+                "bool_value": {
+                  "type": "bool",
+                  "id": 4
+                },
+                "struct_value": {
+                  "type": ".google.protobuf.Struct",
+                  "id": 5
+                },
+                "list_value": {
+                  "type": ".google.protobuf.ListValue",
+                  "id": 6
+                }
+              }
+            },
+            "ListValue": {
+              "fields": {
+                "values": {
+                  "type": ".google.protobuf.Value",
+                  "id": 1,
+                  "rule": "repeated"
+                }
+              }
+            },
+            "NullValue": {
+              "values": {
+                "NULL_VALUE": 0
+              }
+            },
+            "Timestamp": {
+              "fields": {
+                "seconds": {
+                  "type": "int64",
+                  "id": 1
+                },
+                "nanos": {
+                  "type": "int32",
+                  "id": 2
+                }
+              }
+            },
+            "Type": {
+              "fields": {
+                "name": {
+                  "type": "string",
+                  "id": 1
+                },
+                "fields": {
+                  "type": ".google.protobuf.Field",
+                  "id": 2,
+                  "rule": "repeated"
+                },
+                "oneofs": {
+                  "type": "string",
+                  "id": 3,
+                  "rule": "repeated"
+                },
+                "options": {
+                  "type": ".google.protobuf.Option",
+                  "id": 4,
+                  "rule": "repeated"
+                },
+                "source_context": {
+                  "type": ".google.protobuf.SourceContext",
+                  "id": 5
+                },
+                "syntax": {
+                  "type": ".google.protobuf.Syntax",
+                  "id": 6
+                }
+              }
+            },
+            "Field": {
+              "fields": {
+                "kind": {
+                  "type": ".google.protobuf.Field.Kind",
+                  "id": 1
+                },
+                "cardinality": {
+                  "type": ".google.protobuf.Field.Cardinality",
+                  "id": 2
+                },
+                "number": {
+                  "type": "int32",
+                  "id": 3
+                },
+                "name": {
+                  "type": "string",
+                  "id": 4
+                },
+                "type_url": {
+                  "type": "string",
+                  "id": 6
+                },
+                "oneof_index": {
+                  "type": "int32",
+                  "id": 7
+                },
+                "packed": {
+                  "type": "bool",
+                  "id": 8
+                },
+                "options": {
+                  "type": ".google.protobuf.Option",
+                  "id": 9,
+                  "rule": "repeated"
+                },
+                "json_name": {
+                  "type": "string",
+                  "id": 10
+                },
+                "default_value": {
+                  "type": "string",
+                  "id": 11
+                }
+              },
+              "nested": {
+                "Kind": {
+                  "values": {
+                    "TYPE_UNKNOWN": 0,
+                    "TYPE_DOUBLE": 1,
+                    "TYPE_FLOAT": 2,
+                    "TYPE_INT64": 3,
+                    "TYPE_UINT64": 4,
+                    "TYPE_INT32": 5,
+                    "TYPE_FIXED64": 6,
+                    "TYPE_FIXED32": 7,
+                    "TYPE_BOOL": 8,
+                    "TYPE_STRING": 9,
+                    "TYPE_GROUP": 10,
+                    "TYPE_MESSAGE": 11,
+                    "TYPE_BYTES": 12,
+                    "TYPE_UINT32": 13,
+                    "TYPE_ENUM": 14,
+                    "TYPE_SFIXED32": 15,
+                    "TYPE_SFIXED64": 16,
+                    "TYPE_SINT32": 17,
+                    "TYPE_SINT64": 18
+                  }
+                },
+                "Cardinality": {
+                  "values": {
+                    "CARDINALITY_UNKNOWN": 0,
+                    "CARDINALITY_OPTIONAL": 1,
+                    "CARDINALITY_REQUIRED": 2,
+                    "CARDINALITY_REPEATED": 3
+                  }
+                }
+              }
+            },
+            "Enum": {
+              "fields": {
+                "name": {
+                  "type": "string",
+                  "id": 1
+                },
+                "enumvalue": {
+                  "type": ".google.protobuf.EnumValue",
+                  "id": 2,
+                  "rule": "repeated"
+                },
+                "options": {
+                  "type": ".google.protobuf.Option",
+                  "id": 3,
+                  "rule": "repeated"
+                },
+                "source_context": {
+                  "type": ".google.protobuf.SourceContext",
+                  "id": 4
+                },
+                "syntax": {
+                  "type": ".google.protobuf.Syntax",
+                  "id": 5
+                }
+              }
+            },
+            "EnumValue": {
+              "fields": {
+                "name": {
+                  "type": "string",
+                  "id": 1
+                },
+                "number": {
+                  "type": "int32",
+                  "id": 2
+                },
+                "options": {
+                  "type": ".google.protobuf.Option",
+                  "id": 3,
+                  "rule": "repeated"
+                }
+              }
+            },
+            "Option": {
+              "fields": {
+                "name": {
+                  "type": "string",
+                  "id": 1
+                },
+                "value": {
+                  "type": ".google.protobuf.Any",
+                  "id": 2
+                }
+              }
+            },
+            "Syntax": {
+              "values": {
+                "SYNTAX_PROTO2": 0,
+                "SYNTAX_PROTO3": 1
+              }
+            },
+            "DoubleValue": {
+              "fields": {
+                "value": {
+                  "type": "double",
+                  "id": 1
+                }
+              }
+            },
+            "FloatValue": {
+              "fields": {
+                "value": {
+                  "type": "float",
+                  "id": 1
+                }
+              }
+            },
+            "Int64Value": {
+              "fields": {
+                "value": {
+                  "type": "int64",
+                  "id": 1
+                }
+              }
+            },
+            "UInt64Value": {
+              "fields": {
+                "value": {
+                  "type": "uint64",
+                  "id": 1
+                }
+              }
+            },
+            "Int32Value": {
+              "fields": {
+                "value": {
+                  "type": "int32",
+                  "id": 1
+                }
+              }
+            },
+            "UInt32Value": {
+              "fields": {
+                "value": {
+                  "type": "uint32",
+                  "id": 1
+                }
+              }
+            },
+            "BoolValue": {
+              "fields": {
+                "value": {
+                  "type": "bool",
+                  "id": 1
+                }
+              }
+            },
+            "StringValue": {
+              "fields": {
+                "value": {
+                  "type": "string",
+                  "id": 1
+                }
+              }
+            },
+            "BytesValue": {
+              "fields": {
+                "value": {
+                  "type": "bytes",
+                  "id": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

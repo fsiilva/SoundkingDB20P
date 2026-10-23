@@ -1,0 +1,4 @@
+import test from'node:test';import assert from'node:assert/strict';import{deskStatus}from'./deskStatus.js';
+const now=100000;const state={status:'connected',protocol:'tcp',port:6400,snapshot:{receivedAt:new Date(now-1000).toISOString()}};
+test('só apresenta dados recentes como conectados e válidos',()=>{assert.equal(deskStatus(state,now).fresh,true);assert.equal(deskStatus({...state,status:'disconnected'},now).fresh,false);assert.equal(deskStatus({...state,snapshotError:'timeout'},now).fresh,false);assert.equal(deskStatus({...state,decodeError:'invalid'},now).fresh,false)});
+test('um socket aberto não significa estado sincronizado',()=>{assert.equal(deskStatus({...state,snapshot:null},now).label,'Aguardando dados');assert.equal(deskStatus({...state,snapshot:{receivedAt:new Date(now-16000).toISOString()}},now).label,'Dados desatualizados');assert.equal(deskStatus(null,now).label,'Mesa desconectada')});

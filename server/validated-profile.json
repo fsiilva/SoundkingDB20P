@@ -1,0 +1,13 @@
+{
+  "host": "192.168.18.162",
+  "channel1FaderEnabled": true,
+  "moduleId": 0,
+  "channelKey": "in1Model.ch1Model",
+  "channelName": "BATERIA",
+  "minRaw": 0,
+  "maxRaw": 540.817626953125,
+  "stepRaw": 1,
+  "validatedAt": "2026-10-22",
+  "evidence": "capturas/calibracao-canal1/teste-escrita.json",
+  "channel1PanEnabled": true
+}

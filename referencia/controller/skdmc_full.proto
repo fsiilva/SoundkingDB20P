@@ -1,0 +1,981 @@
+// Esquema COMPLETO recuperado dos descritores embarcados (tags e tipos exatos)
+// Gerado por engenharia reversa do app DM20 / Soundking (com.amo.skdmc.data)
+
+// ===== data.bus.bus.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+import "data.bus.input.proto";
+import "data.in.eq.proto";
+import "data.bus.inputsource.proto";
+import "data.bus.output.proto";
+
+message OutBusModel {
+  int32 moduleId = 1;
+  string busName = 2;
+  com.amo.skdmc.data.BusInputModel inputModel = 3;
+  com.amo.skdmc.data.EqPartModel eqModel = 4;
+  com.amo.skdmc.data.BusInputSourceModel inputSourceModel = 5;
+  com.amo.skdmc.data.BusOutputModel outputModel = 6;
+  int32 busCol = 7;
+}
+
+
+// ===== data.bus.common.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+import "data.bus.bus.proto";
+
+message BusModel {
+  com.amo.skdmc.data.OutBusModel outBus1Model = 1;
+  com.amo.skdmc.data.OutBusModel outBus2Model = 2;
+  com.amo.skdmc.data.OutBusModel outBus3Model = 3;
+  com.amo.skdmc.data.OutBusModel outBus4Model = 4;
+  com.amo.skdmc.data.OutBusModel outBus5Model = 5;
+  com.amo.skdmc.data.OutBusModel outBus6Model = 6;
+  com.amo.skdmc.data.OutBusModel outBus7Model = 7;
+  com.amo.skdmc.data.OutBusModel outBus8Model = 8;
+  com.amo.skdmc.data.OutBusModel outBusLRModel = 9;
+}
+
+
+// ===== data.bus.input.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+import "data.bus.inputitem.proto";
+
+message BusInputModel {
+  int32 moduleId = 1;
+  com.amo.skdmc.data.BusInputItemModel busItem5 = 2;
+  com.amo.skdmc.data.BusInputItemModel busItem6 = 3;
+  com.amo.skdmc.data.BusInputItemModel busItem7 = 4;
+  com.amo.skdmc.data.BusInputItemModel busItem8 = 5;
+  com.amo.skdmc.data.BusInputItemModel busItemLR = 6;
+  int32 modul1Value = 7;
+  int32 modul2Value = 8;
+  int32 delay1Value = 9;
+  int32 delay2Value = 10;
+  int32 reverb1Value = 11;
+  int32 reverb2Value = 12;
+  int32 geq1Value = 13;
+  int32 geq2Value = 14;
+}
+
+
+// ===== data.bus.inputitem.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+message BusInputItemModel {
+  int32 moduleId = 1;
+  int32 busParamId = 2;
+  bool isChannelEnable = 3;
+  bool isPrefader = 4;
+  float panValue = 5;
+  float gainValue = 6;
+}
+
+
+// ===== data.bus.inputsource.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+import "data.bus.inputsourceitem.proto";
+
+message BusInputSourceModel {
+  int32 moduleId = 1;
+  com.amo.skdmc.data.BusInputSourceItemModel ch1 = 2;
+  com.amo.skdmc.data.BusInputSourceItemModel ch2 = 3;
+  com.amo.skdmc.data.BusInputSourceItemModel ch3 = 4;
+  com.amo.skdmc.data.BusInputSourceItemModel ch4 = 5;
+  com.amo.skdmc.data.BusInputSourceItemModel ch5 = 6;
+  com.amo.skdmc.data.BusInputSourceItemModel ch6 = 7;
+  com.amo.skdmc.data.BusInputSourceItemModel ch7 = 8;
+  com.amo.skdmc.data.BusInputSourceItemModel ch8 = 9;
+  com.amo.skdmc.data.BusInputSourceItemModel ch9 = 10;
+  com.amo.skdmc.data.BusInputSourceItemModel ch10 = 11;
+  com.amo.skdmc.data.BusInputSourceItemModel ch11 = 12;
+  com.amo.skdmc.data.BusInputSourceItemModel ch12 = 13;
+  com.amo.skdmc.data.BusInputSourceItemModel st1 = 14;
+  com.amo.skdmc.data.BusInputSourceItemModel st2 = 15;
+  com.amo.skdmc.data.BusInputSourceItemModel bus1 = 16;
+  com.amo.skdmc.data.BusInputSourceItemModel bus2 = 17;
+  com.amo.skdmc.data.BusInputSourceItemModel bus3 = 18;
+  com.amo.skdmc.data.BusInputSourceItemModel bus4 = 19;
+  com.amo.skdmc.data.BusInputSourceItemModel bus5 = 20;
+  com.amo.skdmc.data.BusInputSourceItemModel bus6 = 21;
+  com.amo.skdmc.data.BusInputSourceItemModel bus7 = 22;
+  com.amo.skdmc.data.BusInputSourceItemModel bus8 = 23;
+  com.amo.skdmc.data.BusInputSourceItemModel spdif = 24;
+  com.amo.skdmc.data.BusInputSourceItemModel usb = 25;
+}
+
+
+// ===== data.bus.inputsourceitem.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+message BusInputSourceItemModel {
+  int32 moduleId = 1;
+  int32 outModuleId = 2;
+  float gainValue = 3;
+  bool isEnable = 4;
+  float panValue = 5;
+  bool isPrefader = 6;
+}
+
+
+// ===== data.bus.output.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+import "data.bus.inputsourceitem.proto";
+
+message BusOutputModel {
+  int32 moduleId = 1;
+  bool isSolo = 2;
+  bool isMute = 3;
+  bool isDelayEnable = 4;
+  float delayValue = 5;
+  float panValue = 6;
+  float gainValue = 7;
+  bool isSum = 8;
+}
+
+
+// ===== data.common.ImportSceneFile.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+message ImportSceneList {
+  bool filesExist = 1;
+  string text = 2;
+  repeated string sceneFileName = 3;
+}
+
+
+// ===== data.common.allBusSend.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+import "data.in.bus.proto";
+import "data.bus.inputsource.proto";
+
+message AllBusSendModel {
+  repeated com.amo.skdmc.data.MicInBusSendModel busSendPartModel = 6;
+  repeated com.amo.skdmc.data.BusInputSourceModel inputSourceModel = 5;
+}
+
+
+// ===== data.common.alldata.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+import "data.in.common.proto";
+import "data.bus.common.proto";
+import "data.setup.common.proto";
+import "data.common.peq.proto";
+import "data.common.dynamic.proto";
+import "data.common.fxgeq.proto";
+import "data.common.fxdelay.proto";
+import "data.common.fxmodul.proto";
+import "data.common.fxreverb.proto";
+import "data.common.scene.proto";
+
+message SKDMCData {
+  com.amo.skdmc.data.In1Model in1Model = 1;
+  com.amo.skdmc.data.In2Model in2Model = 2;
+  com.amo.skdmc.data.BusModel busModel = 3;
+  com.amo.skdmc.data.SetupModel setupModel = 4;
+  repeated com.amo.skdmc.data.PeqModel peqModelList = 5;
+  repeated com.amo.skdmc.data.DynamicModel dynamicModelList = 6;
+  repeated com.amo.skdmc.data.FxgeqModel fxgeqModelList = 7;
+  repeated com.amo.skdmc.data.SceneModel sceneModelList = 8;
+  string sceneGuid = 9;
+  repeated com.amo.skdmc.data.FxdelayModel fxdelayModelList = 10;
+  repeated com.amo.skdmc.data.FxmodulModel fxmodulModelList = 11;
+  repeated com.amo.skdmc.data.FxreverbModel fxreverbModelList = 12;
+}
+
+
+// ===== data.common.command.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+enum EnmCommand {
+  PlayBtn = 0;
+  CopyBtn = 1;
+  PastBtn = 2;
+  Record_Stop = 3;
+  Record_Play = 4;
+  Record_FirstSong = 5;
+  Record_PrevSong = 6;
+  Record_NextSong = 7;
+  Record_LastSong = 8;
+  Record_ModeChanged = 9;
+  Record_Record = 10;
+  Scene_Export = 11;
+  Scene_GetImportFileList = 12;
+  Scene_Import = 13;
+}
+
+message Command {
+  com.amo.skdmc.data.EnmCommand command = 1;
+  int32 moduleId = 2;
+  int32 integerParam = 3;
+  float floatParam = 4;
+  bool boolParam = 5;
+  int32 sourceModuleId = 6;
+  string strParam = 7;
+}
+
+
+// ===== data.common.commandResult.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+message CommandResult {
+  bool result = 1;
+  string text = 2;
+}
+
+
+// ===== data.common.dynamic.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+message DynamicModel {
+  string name = 1;
+  int32 position = 2;
+  bool isByPass = 3;
+  bool isGateEnable = 4;
+  float gateThresholdValue = 5;
+  float gateAttackValue = 6;
+  float gateReleaseValue = 7;
+  float gateHoldValue = 8;
+  float gateDepthValue = 9;
+  bool isCompressorEnable = 10;
+  float compressorTresholdValue = 11;
+  float compressorAttackValue = 12;
+  float compressorReleaseValue = 13;
+  float compressorGainValue = 14;
+  float compressorRatioValue = 15;
+  bool dynamicByPass = 16;
+  int32 chainModuleId = 17;
+  int32 moduleId = 18;
+}
+
+
+// ===== data.common.dynamicLibary.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+import "data.common.dynamic.proto";
+
+message DynamicLibraryModel {
+  repeated com.amo.skdmc.data.DynamicModel dynamicList = 1;
+}
+
+
+// ===== data.common.fxdelay.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+message FxdelayModel {
+  float gainLSValue = 1;
+  float freqLSValue = 2;
+  float gainHSValue = 3;
+  float freqHSValue = 4;
+  float dryWetValue = 5;
+  float factorValue = 6;
+  float timeValue = 7;
+  int32 typeValue = 8;
+  float tempoValue = 9;
+  float feedbackValue = 10;
+  string name = 11;
+  int32 position = 12;
+  int32 moduleId = 13;
+}
+
+
+// ===== data.common.fxdelayLibary.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+import "data.common.fxdelay.proto";
+
+message FxdelayLibaryModel {
+  repeated com.amo.skdmc.data.FxdelayModel fxdelayList = 1;
+}
+
+
+// ===== data.common.fxgeq.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+message FxgeqModel {
+  bool isByPass = 1;
+  bool isNum18 = 2;
+  bool isNum915 = 3;
+  int32 lrChannel = 4;
+  float fader1 = 6;
+  float fader2 = 7;
+  float fader3 = 8;
+  float fader4 = 9;
+  float fader5 = 10;
+  float fader6 = 11;
+  float fader7 = 12;
+  float fader8 = 13;
+  float fader9 = 14;
+  float fader10 = 15;
+  float fader11 = 16;
+  float fader12 = 17;
+  float fader13 = 18;
+  float fader14 = 19;
+  float fader15 = 20;
+  string name = 21;
+  int32 position = 22;
+  int32 moduleId = 23;
+  float fader16 = 24;
+  float fader17 = 25;
+  float fader18 = 26;
+  float fader19 = 27;
+  float fader20 = 28;
+  float fader21 = 29;
+  float fader22 = 30;
+  float fader23 = 31;
+  float fader24 = 32;
+  float fader25 = 33;
+  float fader26 = 34;
+  float fader27 = 35;
+  float fader28 = 36;
+  float fader29 = 37;
+  float fader30 = 38;
+  float fader31 = 39;
+  bool isNum1724 = 40;
+  bool isNum2531 = 41;
+}
+
+
+// ===== data.common.fxgeqLibary.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+import "data.common.fxgeq.proto";
+
+message FxgeqLibaryModel {
+  repeated com.amo.skdmc.data.FxgeqModel fxgeqList = 1;
+}
+
+
+// ===== data.common.fxmodul.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+message FxmodulModel {
+  int32 typeValue = 1;
+  float gainLSValue = 2;
+  float freqLSValue = 3;
+  float gainHSValue = 4;
+  float freqHSValue = 5;
+  float dryWetValue = 6;
+  int32 rateValue = 7;
+  float intensityValue = 8;
+  float delayValue = 9;
+  string name = 10;
+  int32 position = 11;
+  int32 moduleId = 12;
+}
+
+
+// ===== data.common.fxmodulLibary.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+import "data.common.fxmodul.proto";
+
+message FxmodulLibaryModel {
+  repeated com.amo.skdmc.data.FxmodulModel fxmodulList = 1;
+}
+
+
+// ===== data.common.fxreverb.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+message FxreverbModel {
+  float gainLSValue = 1;
+  float freqLSValue = 2;
+  float gainHSValue = 3;
+  float freqHSValue = 4;
+  float dryWetValue = 5;
+  int32 typeValue = 6;
+  float delayValue = 7;
+  float timeValue = 8;
+  string name = 10;
+  int32 position = 11;
+  int32 moduleId = 12;
+}
+
+
+// ===== data.common.fxreverbLibary.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+import "data.common.fxreverb.proto";
+
+message FxreverbLibaryModel {
+  repeated com.amo.skdmc.data.FxreverbModel fxreverbList = 1;
+}
+
+
+// ===== data.common.message.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+
+// ===== data.common.meterlevel.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+message MeterLevelData {
+  bytes gainValue = 1;
+}
+
+
+// ===== data.common.musiclist.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+message MusicItem {
+  string fileName = 1;
+  string filePathName = 2;
+}
+
+message MusicList {
+  repeated com.amo.skdmc.data.MusicItem items = 1;
+}
+
+
+// ===== data.common.peq.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+message PeqModel {
+  string name = 1;
+  int32 position = 2;
+  bool byPass = 3;
+  float highFreqValue = 4;
+  float highGainValue = 5;
+  float highQValue = 6;
+  float highMidFreqValue = 7;
+  float highMidGainValue = 8;
+  float highMidQValue = 9;
+  float lowMidFreqValue = 10;
+  float lowMidGainValue = 11;
+  float lowMidQValue = 12;
+  float lowFreqValue = 13;
+  float lowGainValue = 14;
+  float lowQValue = 15;
+  int32 moduleId = 16;
+  int32 highType = 17;
+  int32 lowType = 18;
+}
+
+
+// ===== data.common.peqLibary.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+import "data.common.peq.proto";
+
+message PeqLibraryModel {
+  repeated com.amo.skdmc.data.PeqModel peqList = 1;
+}
+
+
+// ===== data.common.playcommand.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+enum EnmPlayMode {
+  Loop = 0;
+  Single = 1;
+  Queue = 2;
+  Random = 3;
+  Once = 4;
+}
+
+message PlayCommand {
+  com.amo.skdmc.data.EnmPlayMode playMode = 1;
+  string songPath = 2;
+  int32 songDuration = 3;
+  int32 currentPosition = 4;
+  int32 instruction = 5;
+  bool isRecord = 6;
+  bool isPlay = 7;
+  int64 recordTimeMs = 8;
+}
+
+
+// ===== data.common.scene.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+message SceneModel {
+  bool checked = 1;
+  bool selected = 2;
+  string guid = 3;
+  string name = 4;
+  string time = 5;
+}
+
+
+// ===== data.common.skdmcdata.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+import "data.in.common.proto";
+
+message AllData {
+  com.amo.skdmc.data.In1Model in1Model = 1;
+  com.amo.skdmc.data.In2Model in2Model = 2;
+}
+
+
+// ===== data.in.bus.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+message MicInBusModel {
+  int32 moduleId = 1;
+  int32 busParamId = 2;
+  bool isBusEnable = 3;
+  bool isPrefader = 4;
+  float gainValue = 5;
+  float panValue = 6;
+}
+
+message MicInBusSendModel {
+  int32 moduleId = 1;
+  com.amo.skdmc.data.MicInBusModel bus1 = 2;
+  com.amo.skdmc.data.MicInBusModel bus2 = 3;
+  com.amo.skdmc.data.MicInBusModel bus3 = 4;
+  com.amo.skdmc.data.MicInBusModel bus4 = 5;
+  com.amo.skdmc.data.MicInBusModel bus5 = 6;
+  com.amo.skdmc.data.MicInBusModel bus6 = 7;
+  com.amo.skdmc.data.MicInBusModel bus7 = 8;
+  com.amo.skdmc.data.MicInBusModel bus8 = 9;
+  com.amo.skdmc.data.MicInBusModel busLnR = 10;
+}
+
+
+// ===== data.in.channel.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+import "data.in.input.proto";
+import "data.in.eq.proto";
+import "data.in.dynamic.proto";
+import "data.in.bus.proto";
+import "data.in.output.proto";
+
+message MicInChannelModel {
+  int32 moduleId = 1;
+  string channelName = 2;
+  com.amo.skdmc.data.MicInInputPartModel inputPartModel = 3;
+  com.amo.skdmc.data.EqPartModel eqPartModel = 4;
+  com.amo.skdmc.data.MicInDynamicPartModel dymanicPartModel = 5;
+  com.amo.skdmc.data.MicInBusSendModel busSendPartModel = 6;
+  com.amo.skdmc.data.MicInOutputPartModel outputPartModel = 7;
+  int32 channelCol = 8;
+}
+
+
+// ===== data.in.common.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+import "data.in.channel.proto";
+
+message In1Model {
+  com.amo.skdmc.data.MicInChannelModel ch1Model = 1;
+  com.amo.skdmc.data.MicInChannelModel ch2Model = 2;
+  com.amo.skdmc.data.MicInChannelModel ch3Model = 3;
+  com.amo.skdmc.data.MicInChannelModel ch4Model = 4;
+  com.amo.skdmc.data.MicInChannelModel ch5Model = 5;
+  com.amo.skdmc.data.MicInChannelModel ch6Model = 6;
+  com.amo.skdmc.data.MicInChannelModel ch7Model = 7;
+  com.amo.skdmc.data.MicInChannelModel ch8Model = 8;
+}
+
+message In2Model {
+  com.amo.skdmc.data.MicInChannelModel ch9Model = 1;
+  com.amo.skdmc.data.MicInChannelModel ch10Model = 2;
+  com.amo.skdmc.data.MicInChannelModel ch11Model = 3;
+  com.amo.skdmc.data.MicInChannelModel ch12Model = 4;
+  com.amo.skdmc.data.MicInChannelModel st1Model = 5;
+  com.amo.skdmc.data.MicInChannelModel st2Model = 6;
+  com.amo.skdmc.data.MicInChannelModel USBModel = 7;
+  com.amo.skdmc.data.MicInChannelModel SPDIFModel = 8;
+}
+
+
+// ===== data.in.dynamic.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+message MicInDynamicPartModel {
+  int32 moduleId = 1;
+  bool isGateEnable = 2;
+  float gateThresholdValue = 3;
+  float gateAttackValue = 4;
+  float gateReleaseValue = 5;
+  float gateHoldValue = 6;
+  float gateDepthValue = 7;
+  bool isCompressorEnable = 8;
+  float compressorTresholdValue = 9;
+  float compressorAttackValue = 10;
+  float compressorReleaseValue = 11;
+  float compressorGainValue = 12;
+  float compressorRatioValue = 13;
+  bool dynamicByPass = 14;
+  int32 chainModuleId = 15;
+  int32 selectedLibIndex = 16;
+}
+
+
+// ===== data.in.eq.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+enum EqFragment {
+  High = 0;
+  HighMid = 1;
+  LowMid = 2;
+  Low = 3;
+}
+
+message EqPartModel {
+  int32 moduleId = 1;
+  bool isByPass = 2;
+  float highFreqValue = 3;
+  float highGainValue = 4;
+  float highQValue = 5;
+  float highMidFreqValue = 6;
+  float highMidGainValue = 7;
+  float highMidQValue = 8;
+  float lowMidFreqValue = 9;
+  float lowMidGainValue = 10;
+  float lowMidQValue = 11;
+  float lowFreqValue = 12;
+  float lowGainValue = 13;
+  float lowQValue = 14;
+  com.amo.skdmc.data.EqFragment selectedEq = 15;
+  int32 selectedLibIndex = 16;
+  int32 highType = 17;
+  int32 lowType = 18;
+}
+
+
+// ===== data.in.input.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+message EfxModuleModel {
+  int32 eqModuleId = 1;
+  int32 eqParamId = 2;
+  string name = 3;
+}
+
+message MicInInputPartModel {
+  int32 moduleId = 1;
+  bool is48vEnable = 2;
+  bool isSumEnable = 3;
+  bool isRevEnable = 4;
+  bool isDelayEnable = 5;
+  float delayValue = 6;
+  bool isHPFEnable = 7;
+  float hpfValue = 8;
+  float trimValue = 9;
+  repeated com.amo.skdmc.data.EfxModuleModel moduleModel = 10;
+  int32 modul1Value = 11;
+  int32 modul2Value = 12;
+  int32 delay1Value = 13;
+  int32 delay2Value = 14;
+  int32 reverb1Value = 15;
+  int32 reverb2Value = 16;
+  int32 geq1Value = 17;
+  int32 geq2Value = 18;
+  bool isTrimEnable = 19;
+  float gainValue = 20;
+}
+
+
+// ===== data.in.output.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+message MicInOutputPartModel {
+  int32 moduleId = 1;
+  float panValue = 2;
+  bool isSoloEnable = 3;
+  bool isMuteEnable = 4;
+  float outFaderValue = 5;
+  bool isLREnable = 6;
+}
+
+
+// ===== data.setup.common.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+import "data.setup.info.proto";
+import "data.setup.patch.proto";
+import "data.setup.fx.proto";
+import "data.setup.recorder.proto";
+import "data.setup.monitor.proto";
+import "data.setup.meter.proto";
+
+message SetupModel {
+  com.amo.skdmc.data.SetupInfoModel infoModel = 1;
+  com.amo.skdmc.data.SetupPatchModel patchModel = 2;
+  com.amo.skdmc.data.SetupFxModel fxModel = 3;
+  com.amo.skdmc.data.SetupRecorderModel recorderModel = 4;
+  com.amo.skdmc.data.SetupMonitorModel monitorModel = 5;
+  com.amo.skdmc.data.SetupMeterModel meterModel = 6;
+}
+
+
+// ===== data.setup.fx.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+message SetupFxModel {
+  int32 moduleId = 1;
+  int32 fxPatchL = 2;
+  int32 fxPatchR = 3;
+  com.amo.skdmc.data.SetupFxModulModel modul1 = 4;
+  com.amo.skdmc.data.SetupFxModulModel modul2 = 5;
+  com.amo.skdmc.data.SetupFxDelayModel delay1 = 6;
+  com.amo.skdmc.data.SetupFxDelayModel delay2 = 7;
+  com.amo.skdmc.data.SetupFxGeqModel geq1 = 8;
+  com.amo.skdmc.data.SetupFxGeqModel geq2 = 9;
+  com.amo.skdmc.data.SetupFxReverbModel reverb1 = 10;
+  com.amo.skdmc.data.SetupFxReverbModel reverb2 = 11;
+}
+
+message SetupFxModulModel {
+  int32 moduleId = 1;
+  float gainLsValue = 2;
+  float freqLsValue = 3;
+  float gainHsValue = 4;
+  float freqHsValue = 5;
+  float dryWetValue = 6;
+  float rateValue = 7;
+  float intensityValue = 8;
+  float delayValue = 9;
+  float typeValue = 10;
+  int32 selectedLibIndex = 11;
+}
+
+message SetupFxDelayModel {
+  int32 moduleId = 1;
+  float gainLsValue = 2;
+  float freqLsValue = 3;
+  float gainHsValue = 4;
+  float freqHsValue = 5;
+  float dryWetValue = 6;
+  float factorValue = 7;
+  float timeValue = 8;
+  float tempoValue = 9;
+  float feedbackValue = 10;
+  int32 TypeValue = 11;
+  int32 selectedLibIndex = 12;
+}
+
+message SetupFxGeqModel {
+  int32 moduleId = 1;
+  bool isByPass = 2;
+  bool isNum18 = 3;
+  bool isNum915 = 4;
+  int32 lrChannel = 5;
+  float fader1 = 6;
+  float fader2 = 7;
+  float fader3 = 8;
+  float fader4 = 9;
+  float fader5 = 10;
+  float fader6 = 11;
+  float fader7 = 12;
+  float fader8 = 13;
+  float fader9 = 14;
+  float fader10 = 15;
+  float fader11 = 16;
+  float fader12 = 17;
+  float fader13 = 18;
+  float fader14 = 19;
+  float fader15 = 20;
+  int32 selectedLibIndex = 21;
+  float fader16 = 22;
+  float fader17 = 23;
+  float fader18 = 24;
+  float fader19 = 25;
+  float fader20 = 26;
+  float fader21 = 27;
+  float fader22 = 28;
+  float fader23 = 29;
+  float fader24 = 30;
+  float fader25 = 31;
+  float fader26 = 32;
+  float fader27 = 33;
+  float fader28 = 34;
+  float fader29 = 35;
+  float fader30 = 36;
+  float fader31 = 37;
+  bool isNum1724 = 38;
+  bool isNum2531 = 39;
+}
+
+message SetupFxReverbModel {
+  int32 moduleId = 1;
+  float gainLsValue = 2;
+  float freqLsValue = 3;
+  float gainHsValue = 4;
+  float freqHsValue = 5;
+  float dryWetValue = 6;
+  float timeValue = 7;
+  float delayValue = 8;
+  float typeValue = 9;
+  int32 selectedLibIndex = 10;
+}
+
+
+// ===== data.setup.info.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+message SetupInfoModel {
+  int32 moduleId = 1;
+  int32 brightnessIndex = 2;
+  bool msUnit = 3;
+  bool ftUnit = 4;
+  bool mUnit = 5;
+  bool isRate48KHz = 6;
+  bool isRate44KHz = 7;
+  bool isFactReset = 8;
+  bool isNetUpdate = 9;
+  bool isFullRestore = 10;
+  bool isWifiEnable = 11;
+  bool isWifiHost = 12;
+  bool isWifiClient = 13;
+  bool isRemoteEnable = 14;
+  string apkVersion = 15;
+  string dspVersion = 16;
+  string serialID = 17;
+  bool isBus8LpfEnable = 18;
+  float bus8LpfValue = 19;
+  bool isMasterLrHPFEnable = 20;
+  float masterLrHpfValue = 21;
+}
+
+
+// ===== data.setup.meter.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+enum EnmChannelMeterStatue {
+  Channel_In = 0;
+  Channel_PreFader = 1;
+  Channel_PostFader = 2;
+}
+
+enum EnmBusMeterStatue {
+  Bus_PreFader = 0;
+  Bus_PostFader = 1;
+}
+
+message SetupMeterModel {
+  com.amo.skdmc.data.EnmChannelMeterStatue channelMeterStatue = 1;
+  com.amo.skdmc.data.EnmBusMeterStatue busMeterStatue = 2;
+  int32 out1 = 3;
+  int32 out2 = 4;
+  int32 out3 = 5;
+  int32 out4 = 6;
+  int32 out5 = 7;
+  int32 out6 = 8;
+  int32 out7 = 9;
+  int32 out8 = 14;
+  int32 spdif_u = 15;
+  int32 spdif_d = 16;
+  int32 usb_u = 17;
+  int32 usb_d = 18;
+}
+
+
+// ===== data.setup.monitor.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+message SetupMonitorModel {
+  bool isAflEnable = 1;
+  bool isMuteEnable = 2;
+  bool isOsciEnable = 3;
+  float mpLevelValue = 4;
+  float osciLevelValue = 5;
+  float osciFreqValue = 6;
+  float soloAflValue = 7;
+  int32 typeValue = 8;
+  bool isBus1 = 9;
+  bool isBus2 = 10;
+  bool isBus3 = 11;
+  bool isBus4 = 12;
+  bool isBus5 = 13;
+  bool isBus6 = 14;
+  bool isBus7 = 15;
+  bool isBus8 = 16;
+  bool isMasterLR = 17;
+}
+
+
+// ===== data.setup.patch.item.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+message SetupPatchItemModel {
+  int32 out1 = 1;
+  int32 out2 = 2;
+  int32 out3 = 3;
+  int32 out4 = 4;
+  int32 out5 = 5;
+  int32 out6 = 6;
+  int32 out7 = 7;
+  int32 out8 = 8;
+  int32 spdif_d = 9;
+  int32 spdif_u = 10;
+  int32 usb_d = 11;
+  int32 usb_u = 12;
+}
+
+
+// ===== data.setup.patch.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+import "data.setup.patch.item.proto";
+
+message SetupPatchModel {
+  bool isDefault = 1;
+  bool isCustom1 = 2;
+  bool isCustom2 = 3;
+  bool isCustom3 = 4;
+  int32 out1 = 5;
+  int32 out2 = 6;
+  int32 out3 = 7;
+  int32 out4 = 8;
+  int32 out5 = 9;
+  int32 out6 = 10;
+  int32 out7 = 11;
+  int32 out8 = 12;
+  int32 spdif_d = 13;
+  int32 spdif_u = 14;
+  int32 usb_d = 15;
+  int32 usb_u = 16;
+  com.amo.skdmc.data.SetupPatchItemModel custom1Model = 17;
+  com.amo.skdmc.data.SetupPatchItemModel custom2Model = 18;
+  com.amo.skdmc.data.SetupPatchItemModel custom3Model = 19;
+  com.amo.skdmc.data.SetupPatchItemModel defaultModel = 20;
+}
+
+
+// ===== data.setup.recorder.proto =====
+syntax = "proto3";
+package com.amo.skdmc.data;
+
+message SetupRecorderModel {
+  bool isPlaybackEnable = 1;
+  int32 isSource = 2;
+}

@@ -1,0 +1,210 @@
+[
+  {
+    "controle": "Fader de canal",
+    "mensagem": "MicInOutputPartModel",
+    "campo": "outFaderValue",
+    "campo_existe_no_descritor": true,
+    "nivel": "CONFIRMADO (campo existe)",
+    "observacao": "Campo existe. Unidade (dB) e faixa: desconhecidas."
+  },
+  {
+    "controle": "Mute de canal",
+    "mensagem": "MicInOutputPartModel",
+    "campo": "isMuteEnable",
+    "campo_existe_no_descritor": true,
+    "nivel": "CONFIRMADO (campo existe)",
+    "observacao": "Booleano confirmado no descritor."
+  },
+  {
+    "controle": "Solo de canal",
+    "mensagem": "MicInOutputPartModel",
+    "campo": "isSoloEnable",
+    "campo_existe_no_descritor": true,
+    "nivel": "CONFIRMADO (campo existe)",
+    "observacao": "Booleano confirmado no descritor."
+  },
+  {
+    "controle": "Pan de canal",
+    "mensagem": "MicInOutputPartModel",
+    "campo": "panValue",
+    "campo_existe_no_descritor": true,
+    "nivel": "CONFIRMADO (campo existe)",
+    "observacao": "Campo existe. Faixa real (ex.: -1..1 ou outra) desconhecida."
+  },
+  {
+    "controle": "48V (phantom)",
+    "mensagem": "MicInInputPartModel",
+    "campo": "is48vEnable",
+    "campo_existe_no_descritor": true,
+    "nivel": "CONFIRMADO (campo existe)",
+    "observacao": "Booleano confirmado."
+  },
+  {
+    "controle": "HPF de entrada",
+    "mensagem": "MicInInputPartModel",
+    "campo": "isHPFEnable",
+    "campo_existe_no_descritor": true,
+    "nivel": "CONFIRMADO (campo existe)",
+    "observacao": "Booleano confirmado; hpfValue também existe."
+  },
+  {
+    "controle": "Trim de entrada",
+    "mensagem": "MicInInputPartModel",
+    "campo": "trimValue",
+    "campo_existe_no_descritor": true,
+    "nivel": "CONFIRMADO (campo existe)",
+    "observacao": "Campo existe; unidade/faixa desconhecidas."
+  },
+  {
+    "controle": "EQ ganho (4 bandas)",
+    "mensagem": "EqPartModel",
+    "campo": "highGainValue",
+    "campo_existe_no_descritor": true,
+    "nivel": "CONFIRMADO (campo existe)",
+    "observacao": "Campos *GainValue existem p/ high/highMid/lowMid/low. Unidade dB provável; faixa desconhecida."
+  },
+  {
+    "controle": "EQ frequência",
+    "mensagem": "EqPartModel",
+    "campo": "highFreqValue",
+    "campo_existe_no_descritor": true,
+    "nivel": "CONFIRMADO (campo existe)",
+    "observacao": "Campos *FreqValue existem. Faixa de Hz por banda NÃO confirmada."
+  },
+  {
+    "controle": "EQ Q",
+    "mensagem": "EqPartModel",
+    "campo": "highQValue",
+    "campo_existe_no_descritor": true,
+    "nivel": "CONFIRMADO (campo existe)",
+    "observacao": "Campos *QValue existem. Faixa de Q desconhecida."
+  },
+  {
+    "controle": "EQ bypass",
+    "mensagem": "EqPartModel",
+    "campo": "isByPass",
+    "campo_existe_no_descritor": true,
+    "nivel": "CONFIRMADO (campo existe)",
+    "observacao": "Booleano confirmado."
+  },
+  {
+    "controle": "EQ tipo (shelf/peak)",
+    "mensagem": "EqPartModel",
+    "campo": "highType",
+    "campo_existe_no_descritor": true,
+    "nivel": "CONFIRMADO (campo existe)",
+    "observacao": "highType/lowType existem (int). Semântica dos valores desconhecida."
+  },
+  {
+    "controle": "Gate threshold",
+    "mensagem": "MicInDynamicPartModel",
+    "campo": "gateThresholdValue",
+    "campo_existe_no_descritor": true,
+    "nivel": "CONFIRMADO (campo existe)",
+    "observacao": "Campo existe; unidade/faixa desconhecidas."
+  },
+  {
+    "controle": "Gate attack/release/hold/depth",
+    "mensagem": "MicInDynamicPartModel",
+    "campo": "gateAttackValue",
+    "campo_existe_no_descritor": true,
+    "nivel": "CONFIRMADO (campo existe)",
+    "observacao": "gateAttack/Release/Hold/Depth existem; unidades (ms/dB) PROVÁVEIS, não confirmadas."
+  },
+  {
+    "controle": "Comp threshold/ratio",
+    "mensagem": "MicInDynamicPartModel",
+    "campo": "compressorTresholdValue",
+    "campo_existe_no_descritor": true,
+    "nivel": "CONFIRMADO (campo existe)",
+    "observacao": "compressorTreshold/Ratio existem; escala do ratio desconhecida."
+  },
+  {
+    "controle": "Comp attack/release/gain",
+    "mensagem": "MicInDynamicPartModel",
+    "campo": "compressorAttackValue",
+    "campo_existe_no_descritor": true,
+    "nivel": "CONFIRMADO (campo existe)",
+    "observacao": "compressorAttack/Release/Gain existem; unidades PROVÁVEIS, não confirmadas."
+  },
+  {
+    "controle": "Envio p/ bus (gain)",
+    "mensagem": "MicInBusModel",
+    "campo": "gainValue",
+    "campo_existe_no_descritor": true,
+    "nivel": "CONFIRMADO (campo existe)",
+    "observacao": "gainValue/isPrefader/panValue existem. Mapa canal→bus e unidade desconhecidos."
+  },
+  {
+    "controle": "Nome do canal",
+    "mensagem": "MicInChannelModel",
+    "campo": "channelName",
+    "campo_existe_no_descritor": true,
+    "nivel": "CONFIRMADO (campo existe)",
+    "observacao": "String confirmada."
+  },
+  {
+    "controle": "Master HPF",
+    "mensagem": "SetupInfoModel",
+    "campo": "isMasterLrHPFEnable",
+    "campo_existe_no_descritor": true,
+    "nivel": "CONFIRMADO (campo existe)",
+    "observacao": "isMasterLrHPFEnable/masterLrHpfValue existem no descritor."
+  },
+  {
+    "controle": "Bus 8 LPF",
+    "mensagem": "SetupInfoModel",
+    "campo": "isBus8LpfEnable",
+    "campo_existe_no_descritor": true,
+    "nivel": "CONFIRMADO (campo existe)",
+    "observacao": "isBus8LpfEnable/bus8LpfValue existem."
+  },
+  {
+    "controle": "Fader de bus (valor)",
+    "mensagem": "—",
+    "campo": "—",
+    "campo_existe_no_descritor": null,
+    "nivel": "PROVÁVEL",
+    "observacao": "OutBusModel tem outputModel; o 'fader de bus' provável mas sem campo escalar isolado confirmado. UI = leitura."
+  },
+  {
+    "controle": "Mute de bus",
+    "mensagem": "—",
+    "campo": "—",
+    "campo_existe_no_descritor": null,
+    "nivel": "DESCONHECIDO",
+    "observacao": "Não há campo 'mute de bus' confirmado no descritor. UI mostra como indicador de leitura."
+  },
+  {
+    "controle": "Medidores (nível) de canal/bus/master",
+    "mensagem": "MeterLevelData/SetupMeterModel",
+    "campo": "gainValue/channelMeterStatue",
+    "campo_existe_no_descritor": null,
+    "nivel": "DESCONHECIDO",
+    "observacao": "Existe estrutura de meter no descritor, mas a leitura real depende da mesa. Na UI são SIMULADOS."
+  },
+  {
+    "controle": "Espectro de frequência",
+    "mensagem": "—",
+    "campo": "—",
+    "campo_existe_no_descritor": null,
+    "nivel": "DESCONHECIDO",
+    "observacao": "Não há espectro no protocolo. Requer fonte de áudio real + FFT. Na UI é SIMULADO."
+  },
+  {
+    "controle": "moduleId → canal/parâmetro físico",
+    "mensagem": "(vários)",
+    "campo": "moduleId",
+    "campo_existe_no_descritor": null,
+    "nivel": "DESCONHECIDO",
+    "observacao": "Todos os modelos têm moduleId, mas o número de cada canal/parâmetro físico só se confirma na captura."
+  },
+  {
+    "controle": "Framing / fim de payload",
+    "mensagem": "—",
+    "campo": "—",
+    "campo_existe_no_descritor": null,
+    "nivel": "PROVÁVEL",
+    "observacao": "Sync 0x5A + int32 id CONFIRMADOS no estático; campo de tamanho é hipótese até a captura."
+  }
+]

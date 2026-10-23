@@ -1,0 +1,2 @@
+import test from'node:test';import assert from'node:assert/strict';import{appFaderDb,displayAppDb}from'./faderScale.js';
+test('curva reproduz constantes extraídas e truncamento da tabela do aplicativo',()=>{assert.ok(Math.abs(appFaderDb(500)+11.444375)<.0001);assert.equal(appFaderDb(500.9),appFaderDb(500));assert.ok(Math.abs(appFaderDb(1000)-10.09)<.0001);assert.equal(appFaderDb(-1),null);assert.equal(appFaderDb(NaN),null);assert.match(displayAppDb(500),/^≈ /)});

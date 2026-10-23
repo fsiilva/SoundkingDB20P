@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Controlador Soundking DB20P — demonstração</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="simple">
+<header>
+  <div>
+    <h1>Controlador Soundking DB20P</h1>
+    <div class="sub">interface inspirada no MQ16 · modo demonstração</div>
+  </div>
+  <div class="spacer"></div>
+  <span class="badge off" id="connBadge">● desconectado</span>
+  <span class="badge sim">estado SIMULADO</span>
+  <div class="modes" id="modes">
+    <button data-mode="simple" class="active">Simples</button>
+    <button data-mode="pro">Profissional</button>
+  </div>
+</header>
+<div class="banner">
+  ⚠️ Modo demonstração: todos os valores são <b>simulados</b> e os ajustes ficam só nesta tela.
+  Nada é enviado à mesa (rede desativada). Medidores marcados como <span class="sim-tag">sim</span> são simulados.
+</div>
+<nav class="tabs" id="tabs">
+  <button data-view="overview" class="active">Visão geral</button>
+  <button data-view="channels">Canais</button>
+  <button data-view="eq">Equalizador</button>
+  <button data-view="dyn">Dinâmica</button>
+  <button data-view="buses">Buses / Saídas</button>
+  <button data-view="analyze">Análise de frequência</button>
+  <button data-view="settings">Config / Diagnóstico</button>
+</nav>
+<main>
+  <section class="view active" id="view-overview"><h2>Visão geral do mixer</h2><div id="overview"></div></section>
+  <section class="view" id="view-channels"><h2>Canais de entrada</h2><div id="channels-wrap"></div></section>
+  <section class="view" id="view-eq"><h2>Equalizador paramétrico (4 bandas)</h2><div id="eq"></div></section>
+  <section class="view" id="view-dyn"><h2>Gate e compressor</h2><div id="dyn"></div></section>
+  <section class="view" id="view-buses"><h2>Buses e saídas</h2><div id="buses"></div></section>
+  <section class="view" id="view-analyze"><h2>Análise de frequência <span class="sim-tag">espectro simulado</span></h2><div id="analyze"></div></section>
+  <section class="view" id="view-settings"><h2>Conexão, configuração e diagnóstico</h2><div id="settings"></div></section>
+</main>
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

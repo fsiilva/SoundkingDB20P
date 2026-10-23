@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';import{makeChannels,loadState,eqResponse,clamp}from'./model.js';
+test('cria 16 canais independentes',()=>{const c=makeChannels();assert.equal(c.length,16);c[0].eq[0].gain=5;assert.equal(c[1].eq[0].gain,0)});
+test('estado corrompido retorna demonstracao',()=>{assert.deepEqual(loadState('invalido'),makeChannels());assert.deepEqual(loadState('[{}]'),makeChannels())});
+test('restaura estado e limita valores fora das faixas da UI',()=>{const c=makeChannels();c[0].fader=500;c[0].pan=-500;c[0].eq[0].freq=90000;const restored=loadState(JSON.stringify(c));assert.equal(restored[0].fader,10);assert.equal(restored[0].pan,-100);assert.equal(restored[0].eq[0].freq,20000)});
+test('curva plana e ganho central matematico',()=>{assert.equal(eqResponse([{freq:1000,gain:0,q:1}],1000),0);assert.equal(eqResponse([{freq:1000,gain:6,q:1}],1000),6);assert.ok(eqResponse([{freq:1000,gain:6,q:1}],10000)<1)});
+test('valores invalidos e campos extras nao entram na cena',()=>{const c=makeChannels();c[0].fader=null;c[0].connected=true;const restored=loadState(JSON.stringify(c));assert.equal(restored[0].fader,-4.5);assert.equal(restored[0].connected,undefined)});
